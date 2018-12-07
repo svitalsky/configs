@@ -1,0 +1,30 @@
+" nastaveni pro gvim, jez se lisi comp od compu
+
+so $VIM/svim/displays/ltp/builtinvimrc
+
+set colorcolumn=113
+hi ColorColumn guibg=#d0ffe0
+
+if &diff
+    set columns=234
+endif
+
+" spellcheck dle lokalniho kodovani
+if has("spell")
+    if exists("v:lang")
+        if v:lang == "cs_CZ.UTF-8"
+            amenu 40.335.265 &Tools.&Spelling.Set\ &language\ to\ "cs"      :set spl=cs spellfile=$VIM/svim/svim.spell/svim-cs.utf-8.add spell<CR>
+        else
+            amenu 40.335.265 &Tools.&Spelling.Set\ &language\ to\ "cs"      :set spl=cs spellfile=$VIM/svim/svim.spell/svim-cs.iso-8859-2.add spell<CR>
+        endif
+    else
+        amenu 40.335.265 &Tools.&Spelling.Set\ &language\ to\ "cs"      :set spl=cs spell<CR>
+    endif
+    amenu 40.335.266 &Tools.&Spelling.Set\ language\ to\ "ces&ky"   :set spl=cesky spellfile=$VIM/svim/svim.spell/svim-cs.ascii.add spell<CR>
+endif
+
+amenu 40.505    Tools.-SEP5-              <Nop>
+amenu 40.510.10 &Tools.Moni&tor.&Built-in       :so $VIM/svim/displays/ltp/builtinvimrc<Cr>
+amenu 40.510.20 &Tools.Moni&tor.&EIZO           :so $VIM/svim/displays/ltp/eizovimrc<Cr>
+amenu 40.510.30 &Tools.Moni&tor.&HP             :so $VIM/svim/displays/ltp/hpvimrc<Cr>
+

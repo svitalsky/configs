@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# keyboard shortcut starts gvim with / as WD
+
+cd $HOME
+exec /usr/local/bin/igvim

@@ -1,0 +1,48 @@
+#!/bin/bash
+# tento skript spusti editor vim pod nazvem, pod kterym jej zavolame,
+# a v pozadovane verzi (pokud tato je dostupna); pozadovanou verzi definuje
+# promenna prostredi VIM_VERSION ve tvaru napr. "7.2" a volaci nazev
+# je dan jmenem symlinku v /usr/local/bin/, napr.
+#     gvim -> ./vim -> $VIM/svim/bin/vim
+# kde poslednim clankem retezu je tento skript.
+
+# uplne nejvic nejzakladnejsi adresar
+VIM="/usr/local/share/vim"
+
+# volame defaultni (aktualni) verzi?
+DEF_VERSION=0
+
+# fce bud zjisti, zda pozadovana verze je dostupna, nebo nastavi verzi
+# aktualni
+verze() {
+    if [ "$VIM_VERSION" = "" ]; then
+        # nacteme cislo verze (major a minor)
+        . $VIM/svim/bin/verze.sh
+        VIM_VERSION="$VIM_VERS_MAJ.$VIM_VERS_MIN"
+        DEF_VERSION=1
+    fi
+
+    VIM_VERS_NODOT=$( echo "$VIM_VERSION" | sed 's+\.++' )
+
+    VIM_INST_BASE="/usr/local/share/vim/vim-$VIM_VERSION"
+    EXECPATH="$VIM_INST_BASE/bin"
+    [ -d "$EXECPATH" ] || \
+        ( [ $DEF_VERSION -eq 0 ] && { unset VIM_VERSION ; verze ; } || \
+                                    { echo "Chyba: chybi defaultni verze Vimu!" >&2 ; exit 1 ; } )
+}
+
+verze
+
+# volaji nas jako vim, gvim, view...?
+CALLNAME=$( basename $0 )
+
+# kde mame syntax, help, menu &c.
+VIMRUNTIME="$VIM_INST_BASE/share/vim/vim$VIM_VERS_NODOT"
+
+# chceme anglicke rozhrani
+# (XXX: ne pres LANG=C, to by nam znemoznilo praci s utf-8, iso-8859-2 atp.!!! XXX)
+LC_MESSAGES=C
+
+# OK, let's go to it
+export VIM VIMRUNTIME LC_MESSAGES
+exec "$EXECPATH/$CALLNAME" "$@"

@@ -1,0 +1,7 @@
+let maplocalleader = ","
+let g:otl_install_toolbar = 0
+so $VIMRUNTIME/ftplugin/otl.vim
+setlocal tw=112
+setlocal spelllang=cs,en
+setlocal spellfile=$VIM/svim/svim.spell/svim-cs.utf-8.add,$VIM/svim/svim.spell/svim-en.utf-8.add
+setlocal spell

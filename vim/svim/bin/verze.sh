@@ -1,0 +1,4 @@
+#!/bin/bash
+
+VIM_VERS_MAJ=8
+VIM_VERS_MIN=1

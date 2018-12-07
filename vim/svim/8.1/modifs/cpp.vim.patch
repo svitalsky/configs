@@ -1,0 +1,18 @@
+--- syntax/cpp.vim	2016-09-03 01:18:18.801584632 +0200
++++ syntax/cpp.vim	2016-09-03 01:17:31.005583970 +0200
+@@ -27,6 +27,7 @@
+ syn keyword cppStructure	class typename template namespace
+ syn keyword cppBoolean		true false
+ syn keyword cppConstant		__cplusplus
++syn keyword cppNewOldFace	nothrow
+ 
+ " C++ 11 extensions
+ if !exists("cpp_no_cpp11")
+@@ -64,6 +65,7 @@
+ hi def link cppStatement		Statement
+ hi def link cppModifier		Type
+ hi def link cppType		Type
++hi def link cppNewOldFace	Type
+ hi def link cppStorageClass	StorageClass
+ hi def link cppStructure		Structure
+ hi def link cppBoolean		Boolean

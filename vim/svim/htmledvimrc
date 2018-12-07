@@ -1,0 +1,8 @@
+source $VIM/svim/dtmlvimrc
+setlocal spelllang=cs,en
+setlocal spellfile=$VIM/svim/svim.spell/svim-cs.utf-8.add,$VIM/svim/svim.spell/svim-en.utf-8.add
+" setlocal spelllang=cs spellfile=$VIM/svim/svim.spell/svim-cs.utf-8.add
+setlocal spell
+normal G
+normal A 
+startinsert

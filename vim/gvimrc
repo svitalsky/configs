@@ -1,0 +1,136 @@
+" toolbar je pro lamy
+set guioptions-=T
+" dialogy jakbysmet
+set guioptions+=c
+set bg=light
+
+set cursorline
+
+" '~' and '@' at the end of the window, characters from
+hi NonText term=bold ctermfg=LightBlue gui=bold guifg=LightBlue guibg=grey15
+hi NonText      guifg=Black guibg=grey70
+" normal text
+hi Normal       guifg=#1a1a1a guibg=#f0f8f0
+highlight Comment    guifg=#3f7f5f
+highlight IncSearch     guifg=Black        guibg=Red       gui=bold
+" Visual mode selection
+highlight Visual     guifg=#1d1d1d       guibg=#ffb886            gui=bold
+highlight Cursor     guifg=Black        guibg=#00d000     gui=bold
+highlight CursorLine guibg=#d8e8d8
+highlight CursorColumn guibg=#d8e8d8
+highlight Special    guifg=#3f5fbf
+highlight Folded term=standout ctermbg=LightGrey ctermfg=DarkBlue guibg=#d0e8d0 guifg=#20b010
+highlight Search  guifg=Yellow        guibg=Orange              gui=bold
+hi Type         guifg=#7f0055 guibg=#f0f8f0 gui=bold
+hi Statement    guifg=#7f0055 guibg=#f0f8f0 gui=bold
+hi TypeDef      guifg=#1f0f98 guibg=#f0f8f0 gui=bold
+hi LineNr	guifg=#22dd88 guibg=#e0e8e0
+hi PreProc      guifg=#d080d0 guibg=#f0f8f0
+hi Todo         guifg=#7f9fbf guibg=#f0f8f0 gui=bold
+hi MatchParen   guibg=#ffb886
+hi Constant     guifg=#2a00ff guibg=#f0f8f0
+
+" error messages on the command line
+hi ErrorMsg     guifg=#55ff55 guibg=#339933
+" the column separating vertically split windows
+hi VertSplit    guifg=#339933 guibg=#339933
+" 'showmode' message (e.g., "-- INSERT --")
+hi ModeMsg      guifg=#44cc44 guibg=#000000
+" |more-prompt|
+hi MoreMsg      guifg=#44cc44 guibg=#000000
+" |hit-enter| prompt and yes/no questions
+hi Question     guifg=#44cc44 guibg=#000000
+" Meta and special keys listed with ":map", also for text used
+hi SpecialKey   guifg=#44cc44 guibg=#d0d8d0
+" status line of current window
+hi StatusLine   guifg=#55ff55 guibg=#339933 gui=none
+" status lines of not-current windows
+hi StatusLineNC guifg=#113311 guibg=#88aa88 gui=none
+" titles for output from ":set all", ":autocmd" etc.
+hi Title        guifg=#1f0f98 guibg=#f0f8f0 gui=bold
+" warning messages
+hi WarningMsg   guifg=#55ff55 guibg=#000000
+
+" diff
+hi DiffChange   guibg=#d0f0e0
+hi DiffText     guibg=#a0c0b0 gui=bold
+
+
+" nefunkcni, je treba to dat do jednotlivych spec
+" syn match stopLine /^.\{110\}\zs.\ze/ containedin=ALL
+" hi stopLine guibg=white
+
+amenu ToolBar.-sep8-            <nul>
+amenu ToolBar.Dtml              :so $VIM/svim/dtmlvimrc<Cr>
+tmenu ToolBar.Dtml              Nacte dtmlvimrc pro editaci HTML a DTML.
+amenu ToolBar.c                 :so $VIM/svim/cvimrc<Cr>
+tmenu ToolBar.c                 Nacte cvimrc pro editaci C a C++.
+amenu ToolBar.TeX               :so $VIM/svim/texvimrc<Cr>
+tmenu ToolBar.TeX               Nacte texvimrc pro editaci TeXu a LaTeXu.
+
+amenu Tools.-SEP2-              <nul>
+amenu Tools.&Dtml\ Vim\ Source   :so $VIM/svim/dtmlvimrc<Cr>
+amenu Tools.&C\ Vim\ Source      :so $VIM/svim/cvimrc<Cr>
+amenu Tools.Te&X\ Vim\ Source    :so $VIM/svim/texvimrc<Cr>
+amenu Tools.&Html\ Text\ Edit    :so $VIM/svim/htmledvimrc<Cr>
+
+vmap <M-Left> :RmInd<Cr>`>V`<
+vmap <M-Right> :AddInd<Cr>`>V`<
+
+" meziokneni
+nmap <C-Up> <C-w>k
+nmap <C-Down> <C-w>j
+nmap <C-Left> <C-w>h
+nmap <C-Right> <C-w>l
+imap <C-Up> <C-o><C-Up>
+imap <C-Down> <C-o><C-Down>
+imap <C-Left> <C-o><C-Left>
+imap <C-Right> <C-o><C-Right>
+nmap <M-Up> <C-w>+
+nmap <M-Down> <C-w>-
+imap <M-Up> <C-o><C-w>+
+imap <M-Down> <C-o><C-w>-
+
+amenu 20.421 &Edit.-sep4-       :
+vmenu 20.422 &Edit.&Indent<Tab>Alt-Right        <M-Right>
+vmenu 20.423 &Edit.U&nIndent<Tab>Alt-Left       <M-Left>
+
+command! -nargs=0 Dtml :so $VIM/svim/dtmlvimrc
+command! -nargs=0 Cpp :so $VIM/svim/cvimrc
+command! -nargs=0 TeX :so $VIM/svim/texvimrc
+
+" set guicursor+=a:blinkwait0-blinkon0-blinkoff0
+set guicursor=n-v-c:block-Cursor/lCursor,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor,sm:block-Cursor,a:blinkwait0-blinkon0-blinkoff0
+
+nmap <F4><F4> :hi Cursor guibg=Red<Cr>:sleep 100m<Cr>:hi Cursor guibg=#00d000<Cr>:sleep 100m<Cr>:hi Cursor guibg=Red<Cr>:sleep 100m<Cr>:hi Cursor guibg=#00d000<Cr>:sleep 100m<Cr>:hi Cursor guibg=Red<Cr>:sleep 100m<Cr>:hi Cursor guibg=#00d000<Cr>
+
+imap <F4><F4> <Esc><F4><F4>a
+
+" set number
+
+function! Flash()
+    highlight CursorLine guibg=#f0a0a0
+    highlight CursorColumn guibg=#f0a0a0
+    set cursorline cursorcolumn
+    redraw
+    sleep 150m
+    set nocursorcolumn nocursorline
+    redraw
+    sleep 100m
+    set cursorline cursorcolumn
+    redraw
+    sleep 150m
+    set nocursorcolumn
+    highlight CursorLine guibg=#d8e8d8
+    highlight CursorColumn guibg=#d8e8d8
+endfunction
+
+nnoremap ,f :call Flash()<Cr>
+
+function! Sleep()
+    sleep 750ms
+endfunction
+
+nmap sleep :call Sleep()<Cr>
+
+source $VIM/svim/gvimrc.local

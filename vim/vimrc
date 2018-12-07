@@ -1,0 +1,213 @@
+if &term=="xterm"
+     " eigth colors
+     set t_Co=8
+     " background color
+     set t_Sb=^[4%dm
+     " foreground color
+     set t_Sf=^[3%dm
+endif
+
+" not vi compability
+set nocompatible 
+" backspace over indent, eol, insert start
+set backspace=2
+" only one space after :join command
+set nojoinspaces
+set ruler
+set showcmd
+set showmatch
+set hlsearch
+set incsearch
+set background=dark
+" autoindent
+set ai
+" number of spaces for autoindent
+set shiftwidth=4
+" for autocomplete scan current buffer, other windows, dictionary, loaded buffs, unloaded buffs, tag completion and included files
+set complete=.,w,k,b,u,t,i
+" timeout for macros
+set timeoutlen=1750
+
+filetype plugin indent on
+syntax on
+
+" tabstop=8 is in fact the default value, I only have it here to remember the name of the property
+set tabstop=4
+set expandtab
+set noignorecase
+set noexrc
+
+set imcmdline
+
+" pyvimrc obsahuje jen pycomment (so far) a snad to tak i zustane
+" pokud ma byt comment nekde jiny nez bezny '#', tak se to prepise temi dalsimmi
+" no jo, to jsem jeste neznal local - prepsat TODO
+au BufNewFile * so $VIM/svim/pyvimrc
+au BufReadPost * so $VIM/svim/pyvimrc
+au BufNewFile *.* so $VIM/svim/pyvimrc
+au BufReadPost *.* so $VIM/svim/pyvimrc
+
+
+au BufNewFile *.php so $VIM/svim/phpvimrc
+au BufReadPost *.php so $VIM/svim/phpvimrc
+au BufWritePost *.php so $VIM/svim/phpvimrc
+au BufNewFile *.php3 so $VIM/svim/phpvimrc
+au BufReadPost *.php3 so $VIM/svim/phpvimrc
+au BufWritePost *.php3 so $VIM/svim/phpvimrc
+
+au BufNewFile *.dtml so $VIM/svim/dtmlvimrc
+au BufReadPost *.dtml so $VIM/svim/dtmlvimrc
+au BufWritePost *.dtml so $VIM/svim/dtmlvimrc
+au BufNewFile *.html so $VIM/svim/dtmlvimrc
+au BufReadPost *.html so $VIM/svim/dtmlvimrc
+au BufWritePost *.html so $VIM/svim/dtmlvimrc
+au BufNewFile *.htm so $VIM/svim/dtmlvimrc
+au BufReadPost *.htm so $VIM/svim/dtmlvimrc
+au BufWritePost *.htm so $VIM/svim/dtmlvimrc
+
+au BufNewFile *.tex so $VIM/svim/texvimrc
+au BufReadPost *.tex so $VIM/svim/texvimrc
+au BufWritePost *.tex so $VIM/svim/texvimrc
+au BufNewFile *.sty so $VIM/svim/texvimrc
+au BufReadPost *.sty so $VIM/svim/texvimrc
+au BufWritePost *.sty so $VIM/svim/texvimrc
+au BufNewFile *.cls so $VIM/svim/texvimrc
+au BufReadPost *.cls so $VIM/svim/texvimrc
+au BufWritePost *.cls so $VIM/svim/texvimrc
+au BufNewFile *.fd so $VIM/svim/texvimrc
+au BufReadPost *.fd so $VIM/svim/texvimrc
+au BufWritePost *.fd so $VIM/svim/texvimrc
+
+au BufNewFile *.otl so $VIM/svim/otlvimrc
+au BufReadPost *.otl so $VIM/svim/otlvimrc
+au BufWritePost *.otl so $VIM/svim/otlvimrc
+
+au BufNewFile *.sql so $VIM/svim/sqlvimrc
+au BufReadPost *.sql so $VIM/svim/sqlvimrc
+au BufWritePost *.sql so $VIM/svim/sqlvimrc
+
+au BufNewFile *.c so $VIM/svim/cvimrc
+au BufReadPost *.c so $VIM/svim/cvimrc
+au BufWritePost *.c so $VIM/svim/cvimrc
+au BufNewFile *.h so $VIM/svim/cvimrc
+au BufReadPost *.h so $VIM/svim/cvimrc
+au BufWritePost *.h so $VIM/svim/cvimrc
+au BufNewFile *.cpp so $VIM/svim/cvimrc
+au BufReadPost *.cpp so $VIM/svim/cvimrc
+au BufWritePost *.cpp so $VIM/svim/cvimrc
+au BufNewFile *.hpp so $VIM/svim/cvimrc
+au BufReadPost *.hpp so $VIM/svim/cvimrc
+au BufWritePost *.hpp so $VIM/svim/cvimrc
+
+" pokud si otevru log texu ef petkou
+au BufReadPost *.log imap <buffer> <F5> <Esc>ZZ
+au BufReadPost *.log nmap <buffer> <F5> ZZ
+
+" "au Syntax" ma vyhodu, ze neni zavisly na koncovce (napr. otevira-li se soubor pres link),
+" ale zase muze vest k zacykleni (napr. v cvimrc volam "set syntax=cpp"), takze opatrne.
+
+au Syntax sh so $VIM/svim/shvimrc
+au Syntax python so $VIM/svim/pyvimrc
+au Syntax vim so $VIM/svim/vimvimrc
+au Syntax crontab so $VIM/svim/crontabvimrc
+au Syntax make set noexpandtab
+
+" au BufReadPost *.* retab
+" au BufReadPost * retab
+
+au BufNewFile * syntax sync fromstart
+au BufReadPost * syntax sync fromstart
+
+" meziokneni
+nmap <C-k> <C-w>k
+nmap <C-j> <C-w>j
+nmap <C-h> <C-w>h
+nmap <C-l> <C-w>l
+imap <C-k> <C-o><C-k>
+imap <C-j> <C-o><C-j>
+imap <C-h> <C-o><C-h>
+imap <C-l> <C-o><C-l>
+" word completion
+imap <F9> <C-p>
+imap <F10> <C-n>
+nmap <F9> a<F9>
+nmap <F10> a<F10>
+" join lines
+nmap <S-F11> mj:j<Cr>`j
+imap <S-F11> <Esc><S-F11>a
+vmap <S-F11> :j<Cr>
+" write command
+imap <F2> <C-o>:w<Cr>
+nmap <F2> :w<Cr>
+vmap <F2> <Esc>:w<Cr>
+" write & clear 
+map ``` :w<Cr><C-Home>d<C-End>
+imap ``` <Esc>```a
+
+fun! AddInd(start, end)
+  if a:start > a:end
+    return
+  endif
+  let cur = a:start
+  while cur <= a:end
+    let str = getline(cur)
+    if strlen(str) > 0                          " prazdne ignorujeme
+      let str = "  " . str
+      call setline(cur, str)
+    endif
+    let cur = cur + 1
+  endwhile
+  return
+endfun
+
+
+fun! RmInd(start, end)
+  if a:start > a:end
+    return
+  endif
+  let cur = a:start
+  while cur <= a:end
+    let str = getline(cur)
+    if (str[0] == " ") && (str[1] == " ")
+      let ii = 0
+      let res = ""
+      while (ii + 2) < strlen(str)
+        let res = res . str[ii + 2]
+        let ii = ii + 1
+      endwhile
+      call setline(cur, res)
+    endif
+    let cur = cur + 1
+  endwhile
+  return
+endfun
+
+
+command! -nargs=0 -range RmInd call RmInd(<line1>, <line2>)
+command! -nargs=0 -range AddInd call AddInd(<line1>, <line2>)
+
+" diff a wrap start
+if &diff
+  set wrap
+  nmap ,, :diffput<Cr>]c
+  nmap // <C-w>w:w<Cr><C-w>w1G
+endif
+
+au BufReadPost * if &diff | set wrap | endif
+au BufReadPost *.* if &diff | set wrap | endif
+" augroup diffWrap
+" augroup end
+
+if has("diff")
+  set wrap
+endif
+au VimEnter * if &diff | set wrap | endif
+au VimEnter *.* if &diff | set wrap | endif
+" diff a wrap end
+au VimEnter * set wrap
+au VimEnter *.* set wrap
+
+set secure
+
+source $VIM/svim/vimrc.local
+

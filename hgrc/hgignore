@@ -1,0 +1,61 @@
+\.orig$
+\.orig\..*$
+\.chg\..*$
+\.rej$
+\.conflict\~$
+\.sw[po]$
+\.class$
+# \/bin\/
+# ^bin\/
+\/classes\/
+^dist\/
+\/dist\/
+\.jasper$
+\.svn\/
+\.log$
+^log\/
+^logs\/
+(^|\/)RemoteSystemsTempFiles\/
+^\.metadata\/
+\.metadata\/version.ini
+\.metadata\/\.plugins\/
+\.metadata\/\.lock
+\.metadata\/\.mylyn
+^tmp\/
+\/tmp\/
+\.[a-zA-Z0-9]+~$
+\/~[^/]*\.doc
+^~[^/]*\.doc
+\/CVS\/
+\/\.~lock\.
+\/~\$[^/]+\.xlsm
+\/~\$[^/]+\.xlsx
+\/~\$[^/]+\.xls
+\/\.pmd$
+^\.pmd$
+# intellij idea
+\.idea\/workspace\.xml
+\.idea\/findbugs-idea\.xml
+\.iws
+\/out\/test\/
+^out\/test\/
+\/out\/production\/
+^out\/production\/
+\/out\/artifacts\/
+^out\/artifacts\/
+\/target\/
+^target\/
+\.idea\/artifacts\/
+\.idea\/
+\.out$
+\.iml$
+\.gitignore
+^cloc-it$
+\.synctex\.gz
+
+# The following must go to the local .hgignore list in case they are needed
+# \/log\/
+# \/logs\/
+# build\/
+# ^doc\/
+# \/doc\/

@@ -1,0 +1,40 @@
+fun! VimComment(start, end)
+  if a:start > a:end
+    return
+  endif
+  let cur = a:start
+  while cur <= a:end
+    let curstr = getline(cur)
+    if strlen(curstr) > 0
+      if curstr[0] == "\""
+        if curstr[1] == " "
+          let ii = 0
+          let res = ""
+          while (ii + 2) < strlen(curstr)
+            let res = res . curstr[ii + 2]
+            let ii = ii + 1
+          endwhile
+        else
+          let ii = 0
+          let res = ""
+          while (ii + 1) < strlen(curstr)
+            let res = res . curstr[ii + 1]
+            let ii = ii + 1
+          endwhile
+        endif
+      else
+        let res = "\" " . getline(cur)
+      endif
+      call setline(cur, res)
+    endif
+    let cur = cur + 1
+  endwhile
+  return
+endfun
+
+command! -nargs=0 -range -buffer VimComment call VimComment(<line1>, <line2>)
+
+vmap <F12> :VimComment<Cr>
+nmap <F12> :VimComment<Cr>
+imap <F12> " 
+

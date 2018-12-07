@@ -1,0 +1,583 @@
+"aunmenu Tools.Dtml
+"aunmenu Tools.-SEP2-
+"aunmenu ToolBar.Dtml
+
+nmenu &Dtml.&if<Tab>`if    `if
+vmenu &Dtml.&if<Tab>`if    `if
+imenu &Dtml.&if<Tab>`if    `if
+nmenu &Dtml.if-&else<Tab>`ef    `ef
+vmenu &Dtml.if-&else<Tab>`ef    `ef
+imenu &Dtml.if-&else<Tab>`ef    `ef
+nmenu &Dtml.if-e&lif<Tab>`fef   `fef
+vmenu &Dtml.if-e&lif<Tab>`fef   `fef
+imenu &Dtml.if-e&lif<Tab>`fef   `fef
+nmenu &Dtml.if-elif-el&se<Tab>`feef   `feef
+vmenu &Dtml.if-elif-el&se<Tab>`feef   `feef
+imenu &Dtml.if-elif-el&se<Tab>`feef   `feef
+nmenu &Dtml.if-start    a<dtml-if ""><Esc>hi
+imenu &Dtml.if-start    <dtml-if ""><Esc>hi
+nmenu &Dtml.if-end    a</dtml-if>
+imenu &Dtml.if-end    </dtml-if>
+nmenu &Dtml.elif<Tab>`F8    `<F8>
+imenu &Dtml.elif<Tab>`F8    `<F8>
+amenu &Dtml.-sep1-      :
+nmenu &Dtml.else<Tab>F8    <F8>
+imenu &Dtml.else<Tab>F8    <F8>
+amenu &Dtml.-sep2-      :
+imenu &Dtml.i&n<Tab>`in         `in
+vmenu &Dtml.i&n<Tab>`in         `in
+nmenu &Dtml.i&n<Tab>`in         `in
+imenu &Dtml.in-else<Tab>`en     `en
+vmenu &Dtml.in-else<Tab>`en     `en
+nmenu &Dtml.in-else<Tab>`en     `en
+amenu &Dtml.-sep3-      :
+imenu &Dtml.&try<Tab>`try `try
+vmenu &Dtml.&try<Tab>`try `try
+nmenu &Dtml.&try<Tab>`try `try
+imenu &Dtml.raise       <dtml-raise type=""></dtml-raise><M-Left><Esc>hi
+nmenu &Dtml.raise       a<dtml-raise type=""></dtml-raise><M-Left><Esc>hi
+vmenu &Dtml.raise       <Esc>`>a</dtml-raise><Esc>`<i<dtml-raise type=""><Esc>hi
+amenu &Dtml.-sep4-      :
+nmenu &Dtml.&call        a<dtml-call ""><Esc>hi
+imenu &Dtml.&call        <dtml-call ""><Esc>hi
+nmenu &Dtml.call\ REQUEST\ set<Tab>F6   <F6>
+imenu &Dtml.call\ REQUEST\ set<Tab>F6   <F6>
+nmenu &Dtml.var<Tab>F7   <F7>
+imenu &Dtml.var<Tab>F7   <F7>
+nmenu &Dtml.REQUEST[]<Tab>`F9    `<F9>
+imenu &Dtml.REQUEST[]<Tab>`F9    `<F9>
+nmenu &Dtml.sequence-item<Tab>`F10       `<F10>
+imenu &Dtml.sequence-item<Tab>`F10       `<F10>
+" nmenu &Dtml.dtml-var\ jako\ entita<Tab>F11    <F11>
+" imenu &Dtml.dtml-var\ jako\ entita<Tab>F11    <F11>
+amenu &Dtml.-sep5-      :
+nmenu &Dtml.standard\ html\ header<Tab>`shd     `shd
+imenu &Dtml.standard\ html\ header<Tab>`shd     `shd
+nmenu &Dtml.standard\ html\ footer<Tab>`sft     `sft
+imenu &Dtml.standard\ html\ footer<Tab>`sft     `sft
+amenu &Dtml.-sep6-      :
+nmenu &Dtml.com&ment<Tab>F12    <F12>
+vmenu &Dtml.com&ment<Tab>F12    <F12>
+imenu &Dtml.com&ment<Tab>F12    <F12>
+imenu &Dtml.comment-start<Tab>`F12    `<F12>
+imenu &Dtml.comment-end<Tab>``F12    ``<F12>
+nmenu &Dtml.comment-start<Tab>`F12    `<F12>
+nmenu &Dtml.comment-end<Tab>``F12    ``<F12>
+amenu &Dtml.-sep7-      :
+imenu &Dtml.make\ dtml\ tag<Tab>F5      <F5>
+
+
+nmenu Htm&l.&link<Tab>`aa       `aa
+vmenu Htm&l.&link<Tab>`aa       `aa
+imenu Htm&l.&link<Tab>`aa       `aa
+nmenu Htm&l.&image<Tab>`im      `im
+imenu Htm&l.&image<Tab>`im      `im
+nmenu Htm&l.&span      aspan<F4>
+vmenu Htm&l.&span      <Esc>`>a</span><Esc>`<i<span>
+imenu Htm&l.&span      span<F4>
+nmenu Htm&l.spa&n\ class<Tab>`ss       `ss
+vmenu Htm&l.spa&n\ class<Tab>`ss       `ss
+imenu Htm&l.spa&n\ class<Tab>`ss       `ss
+nmenu Htm&l.&div      adiv<F4>
+vmenu Htm&l.&div      <Esc>`>a</div><Esc>`<i<div>
+imenu Htm&l.&div      div<F4>
+nmenu Htm&l.di&v\ class<Tab>`dv       `dv
+vmenu Htm&l.di&v\ class<Tab>`dv       `dv
+imenu Htm&l.di&v\ class<Tab>`dv       `dv
+amenu Htm&l.-sep1-      :
+imenu Htm&l.&form.&form<Tab>`ff         `ff
+nmenu Htm&l.&form.&form<Tab>`ff         `ff
+vmenu Htm&l.&form.&form<Tab>`ff         `ff
+imenu Htm&l.&form.form\ start<Tab>`fh   `fh
+nmenu Htm&l.&form.form\ start<Tab>`fh   `fh
+imenu Htm&l.&form.form\ end<Tab>`ft     `ft
+nmenu Htm&l.&form.form\ end<Tab>`ft     `ft
+amenu Htm&l.&form.-sep1-                :
+imenu Htm&l.&form.te&xt<Tab>`tx         `tx
+nmenu Htm&l.&form.te&xt<Tab>`tx         `tx
+imenu Htm&l.&form.text&area<Tab>`ta     `ta
+vmenu Htm&l.&form.text&area<Tab>`ta     `ta
+nmenu Htm&l.&form.text&area<Tab>`ta     `ta
+imenu Htm&l.&form.&radio<Tab>`rd        `rd
+nmenu Htm&l.&form.&radio<Tab>`rd        `rd
+imenu Htm&l.&form.&checkbox<Tab>`ch     `ch
+nmenu Htm&l.&form.&checkbox<Tab>`ch     `ch
+imenu Htm&l.&form.&hidden<Tab>`hd       `hd
+nmenu Htm&l.&form.&hidden<Tab>`hd       `hd
+imenu Htm&l.&form.&select<Tab>`sl       `sl
+nmenu Htm&l.&form.&select<Tab>`sl       `sl
+imenu Htm&l.&form.&option<Tab>`op       `op
+vmenu Htm&l.&form.&option<Tab>`op       `op
+nmenu Htm&l.&form.&option<Tab>`op       `op
+imenu Htm&l.&form.&button<Tab>`bt       `bt
+nmenu Htm&l.&form.&button<Tab>`bt       `bt
+imenu Htm&l.&form.submi&t<Tab>`sb       `sb
+nmenu Htm&l.&form.submi&t<Tab>`sb       `sb
+imenu Htm&l.&form.r&eset<Tab>`rs        `rs
+nmenu Htm&l.&form.r&eset<Tab>`rs        `rs
+imenu Htm&l.&table.table\ &start<Tab>`th        `th
+nmenu Htm&l.&table.table\ &start<Tab>`th        `th
+imenu Htm&l.&table.table\ &end<Tab>`tf          `tf
+nmenu Htm&l.&table.table\ &end<Tab>`tf          `tf
+imenu Htm&l.&table.t&d<Tab>C-Tab\ td            <C-Tab>td
+nmenu Htm&l.&table.t&d<Tab>C-Tab\ td            <C-Tab>td
+vmenu Htm&l.&table.t&d<Tab>C-Tab\ td            <C-Tab>td
+imenu Htm&l.&table.td\ &inline<Tab>`td          `td
+nmenu Htm&l.&table.td\ &inline<Tab>`td          `td
+vmenu Htm&l.&table.td\ &inline<Tab>`td          `td
+imenu Htm&l.&table.t&r.&1\ column<Tab>C-Tab\ tr1  <C-Tab>tr1
+nmenu Htm&l.&table.t&r.&1\ column<Tab>C-Tab\ tr1  <C-Tab>tr1
+imenu Htm&l.&table.t&r.&2\ columns<Tab>C-Tab\ tr2  <C-Tab>tr2
+nmenu Htm&l.&table.t&r.&2\ columns<Tab>C-Tab\ tr2  <C-Tab>tr2
+imenu Htm&l.&table.t&r.&3\ columns<Tab>C-Tab\ tr3  <C-Tab>tr3
+nmenu Htm&l.&table.t&r.&3\ columns<Tab>C-Tab\ tr3  <C-Tab>tr3
+imenu Htm&l.&table.t&r.&4\ columns<Tab>C-Tab\ tr4  <C-Tab>tr4
+nmenu Htm&l.&table.t&r.&4\ columns<Tab>C-Tab\ tr4  <C-Tab>tr4
+imenu Htm&l.&table.t&r.&5\ columns<Tab>C-Tab\ tr5  <C-Tab>tr5
+nmenu Htm&l.&table.t&r.&5\ columns<Tab>C-Tab\ tr5  <C-Tab>tr5
+imenu Htm&l.&table.t&r.&6\ columns<Tab>C-Tab\ tr6  <C-Tab>tr6
+nmenu Htm&l.&table.t&r.&6\ columns<Tab>C-Tab\ tr6  <C-Tab>tr6
+imenu Htm&l.&table.t&r.&7\ columns<Tab>C-Tab\ tr7  <C-Tab>tr7
+nmenu Htm&l.&table.t&r.&7\ columns<Tab>C-Tab\ tr7  <C-Tab>tr7
+amenu Htm&l.&table.-sep1-        :
+imenu Htm&l.&table.table\ &1\ row.&1\ column<Tab>C-Tab\ 11  <C-Tab>11
+nmenu Htm&l.&table.table\ &1\ row.&1\ column<Tab>C-Tab\ 11  <C-Tab>11
+imenu Htm&l.&table.table\ &1\ row.&2\ columns<Tab>C-Tab\ 21  <C-Tab>21
+nmenu Htm&l.&table.table\ &1\ row.&2\ columns<Tab>C-Tab\ 21  <C-Tab>21
+imenu Htm&l.&table.table\ &1\ row.&3\ columns<Tab>C-Tab\ 31  <C-Tab>31
+nmenu Htm&l.&table.table\ &1\ row.&3\ columns<Tab>C-Tab\ 31  <C-Tab>31
+imenu Htm&l.&table.table\ &1\ row.&4\ columns<Tab>C-Tab\ 41  <C-Tab>41
+nmenu Htm&l.&table.table\ &1\ row.&4\ columns<Tab>C-Tab\ 41  <C-Tab>41
+imenu Htm&l.&table.table\ &1\ row.&5\ columns<Tab>C-Tab\ 51  <C-Tab>51
+nmenu Htm&l.&table.table\ &1\ row.&5\ columns<Tab>C-Tab\ 51  <C-Tab>51
+imenu Htm&l.&table.table\ &1\ row.&6\ columns<Tab>C-Tab\ 61  <C-Tab>61
+nmenu Htm&l.&table.table\ &1\ row.&6\ columns<Tab>C-Tab\ 61  <C-Tab>61
+imenu Htm&l.&table.table\ &1\ row.&7\ columns<Tab>C-Tab\ 71  <C-Tab>71
+nmenu Htm&l.&table.table\ &1\ row.&7\ columns<Tab>C-Tab\ 71  <C-Tab>71
+imenu Htm&l.&table.table\ &2\ rows.&1\ column<Tab>C-Tab\ 12  <C-Tab>12
+nmenu Htm&l.&table.table\ &2\ rows.&1\ column<Tab>C-Tab\ 12  <C-Tab>12
+imenu Htm&l.&table.table\ &2\ rows.&2\ columns<Tab>C-Tab\ 22  <C-Tab>22
+nmenu Htm&l.&table.table\ &2\ rows.&2\ columns<Tab>C-Tab\ 22  <C-Tab>22
+imenu Htm&l.&table.table\ &2\ rows.&3\ columns<Tab>C-Tab\ 32  <C-Tab>32
+nmenu Htm&l.&table.table\ &2\ rows.&3\ columns<Tab>C-Tab\ 32  <C-Tab>32
+imenu Htm&l.&table.table\ &2\ rows.&4\ columns<Tab>C-Tab\ 42  <C-Tab>42
+nmenu Htm&l.&table.table\ &2\ rows.&4\ columns<Tab>C-Tab\ 42  <C-Tab>42
+imenu Htm&l.&table.table\ &2\ rows.&5\ columns<Tab>C-Tab\ 52  <C-Tab>52
+nmenu Htm&l.&table.table\ &2\ rows.&5\ columns<Tab>C-Tab\ 52  <C-Tab>52
+imenu Htm&l.&table.table\ &2\ rows.&6\ columns<Tab>C-Tab\ 62  <C-Tab>62
+nmenu Htm&l.&table.table\ &2\ rows.&6\ columns<Tab>C-Tab\ 62  <C-Tab>62
+imenu Htm&l.&table.table\ &2\ rows.&7\ columns<Tab>C-Tab\ 72  <C-Tab>72
+nmenu Htm&l.&table.table\ &2\ rows.&7\ columns<Tab>C-Tab\ 72  <C-Tab>72
+imenu Htm&l.&table.table\ &3\ rows.&1\ column<Tab>C-Tab\ 13  <C-Tab>13
+nmenu Htm&l.&table.table\ &3\ rows.&1\ column<Tab>C-Tab\ 13  <C-Tab>13
+imenu Htm&l.&table.table\ &3\ rows.&2\ columns<Tab>C-Tab\ 23  <C-Tab>23
+nmenu Htm&l.&table.table\ &3\ rows.&2\ columns<Tab>C-Tab\ 23  <C-Tab>23
+imenu Htm&l.&table.table\ &3\ rows.&3\ columns<Tab>C-Tab\ 33  <C-Tab>33
+nmenu Htm&l.&table.table\ &3\ rows.&3\ columns<Tab>C-Tab\ 33  <C-Tab>33
+imenu Htm&l.&table.table\ &3\ rows.&4\ columns<Tab>C-Tab\ 43  <C-Tab>43
+nmenu Htm&l.&table.table\ &3\ rows.&4\ columns<Tab>C-Tab\ 43  <C-Tab>43
+imenu Htm&l.&table.table\ &3\ rows.&5\ columns<Tab>C-Tab\ 53  <C-Tab>53
+nmenu Htm&l.&table.table\ &3\ rows.&5\ columns<Tab>C-Tab\ 53  <C-Tab>53
+imenu Htm&l.&table.table\ &3\ rows.&6\ columns<Tab>C-Tab\ 63  <C-Tab>63
+nmenu Htm&l.&table.table\ &3\ rows.&6\ columns<Tab>C-Tab\ 63  <C-Tab>63
+imenu Htm&l.&table.table\ &3\ rows.&7\ columns<Tab>C-Tab\ 73  <C-Tab>73
+nmenu Htm&l.&table.table\ &3\ rows.&7\ columns<Tab>C-Tab\ 73  <C-Tab>73
+imenu Htm&l.&table.table\ &4\ rows.&1\ column<Tab>C-Tab\ 14  <C-Tab>14
+nmenu Htm&l.&table.table\ &4\ rows.&1\ column<Tab>C-Tab\ 14  <C-Tab>14
+imenu Htm&l.&table.table\ &4\ rows.&2\ columns<Tab>C-Tab\ 24  <C-Tab>24
+nmenu Htm&l.&table.table\ &4\ rows.&2\ columns<Tab>C-Tab\ 24  <C-Tab>24
+imenu Htm&l.&table.table\ &4\ rows.&3\ columns<Tab>C-Tab\ 34  <C-Tab>34
+nmenu Htm&l.&table.table\ &4\ rows.&3\ columns<Tab>C-Tab\ 34  <C-Tab>34
+imenu Htm&l.&table.table\ &4\ rows.&4\ columns<Tab>C-Tab\ 44  <C-Tab>44
+nmenu Htm&l.&table.table\ &4\ rows.&4\ columns<Tab>C-Tab\ 44  <C-Tab>44
+imenu Htm&l.&table.table\ &4\ rows.&5\ columns<Tab>C-Tab\ 54  <C-Tab>54
+nmenu Htm&l.&table.table\ &4\ rows.&5\ columns<Tab>C-Tab\ 54  <C-Tab>54
+imenu Htm&l.&table.table\ &4\ rows.&6\ columns<Tab>C-Tab\ 64  <C-Tab>64
+nmenu Htm&l.&table.table\ &4\ rows.&6\ columns<Tab>C-Tab\ 64  <C-Tab>64
+imenu Htm&l.&table.table\ &4\ rows.&7\ columns<Tab>C-Tab\ 74  <C-Tab>74
+nmenu Htm&l.&table.table\ &4\ rows.&7\ columns<Tab>C-Tab\ 74  <C-Tab>74
+imenu Htm&l.&table.table\ &5\ rows.&1\ column<Tab>C-Tab\ 15  <C-Tab>15
+nmenu Htm&l.&table.table\ &5\ rows.&1\ column<Tab>C-Tab\ 15  <C-Tab>15
+imenu Htm&l.&table.table\ &5\ rows.&2\ columns<Tab>C-Tab\ 25  <C-Tab>25
+nmenu Htm&l.&table.table\ &5\ rows.&2\ columns<Tab>C-Tab\ 25  <C-Tab>25
+imenu Htm&l.&table.table\ &5\ rows.&3\ columns<Tab>C-Tab\ 35  <C-Tab>35
+nmenu Htm&l.&table.table\ &5\ rows.&3\ columns<Tab>C-Tab\ 35  <C-Tab>35
+imenu Htm&l.&table.table\ &5\ rows.&4\ columns<Tab>C-Tab\ 45  <C-Tab>45
+nmenu Htm&l.&table.table\ &5\ rows.&4\ columns<Tab>C-Tab\ 45  <C-Tab>45
+imenu Htm&l.&table.table\ &5\ rows.&5\ columns<Tab>C-Tab\ 55  <C-Tab>55
+nmenu Htm&l.&table.table\ &5\ rows.&5\ columns<Tab>C-Tab\ 55  <C-Tab>55
+imenu Htm&l.&table.table\ &5\ rows.&6\ columns<Tab>C-Tab\ 65  <C-Tab>65
+nmenu Htm&l.&table.table\ &5\ rows.&6\ columns<Tab>C-Tab\ 65  <C-Tab>65
+imenu Htm&l.&table.table\ &5\ rows.&7\ columns<Tab>C-Tab\ 75  <C-Tab>75
+nmenu Htm&l.&table.table\ &5\ rows.&7\ columns<Tab>C-Tab\ 75  <C-Tab>75
+imenu Htm&l.&table.table\ &6\ rows.&1\ column<Tab>C-Tab\ 16  <C-Tab>16
+nmenu Htm&l.&table.table\ &6\ rows.&1\ column<Tab>C-Tab\ 16  <C-Tab>16
+imenu Htm&l.&table.table\ &6\ rows.&2\ columns<Tab>C-Tab\ 26  <C-Tab>26
+nmenu Htm&l.&table.table\ &6\ rows.&2\ columns<Tab>C-Tab\ 26  <C-Tab>26
+imenu Htm&l.&table.table\ &6\ rows.&3\ columns<Tab>C-Tab\ 36  <C-Tab>36
+nmenu Htm&l.&table.table\ &6\ rows.&3\ columns<Tab>C-Tab\ 36  <C-Tab>36
+imenu Htm&l.&table.table\ &6\ rows.&4\ columns<Tab>C-Tab\ 46  <C-Tab>46
+nmenu Htm&l.&table.table\ &6\ rows.&4\ columns<Tab>C-Tab\ 46  <C-Tab>46
+imenu Htm&l.&table.table\ &6\ rows.&5\ columns<Tab>C-Tab\ 56  <C-Tab>56
+nmenu Htm&l.&table.table\ &6\ rows.&5\ columns<Tab>C-Tab\ 56  <C-Tab>56
+imenu Htm&l.&table.table\ &6\ rows.&6\ columns<Tab>C-Tab\ 66  <C-Tab>66
+nmenu Htm&l.&table.table\ &6\ rows.&6\ columns<Tab>C-Tab\ 66  <C-Tab>66
+imenu Htm&l.&table.table\ &6\ rows.&7\ columns<Tab>C-Tab\ 76  <C-Tab>76
+nmenu Htm&l.&table.table\ &6\ rows.&7\ columns<Tab>C-Tab\ 76  <C-Tab>76
+imenu Htm&l.&table.table\ &7\ rows.&1\ column<Tab>C-Tab\ 17  <C-Tab>17
+nmenu Htm&l.&table.table\ &7\ rows.&1\ column<Tab>C-Tab\ 17  <C-Tab>17
+imenu Htm&l.&table.table\ &7\ rows.&2\ columns<Tab>C-Tab\ 27  <C-Tab>27
+nmenu Htm&l.&table.table\ &7\ rows.&2\ columns<Tab>C-Tab\ 27  <C-Tab>27
+imenu Htm&l.&table.table\ &7\ rows.&3\ columns<Tab>C-Tab\ 37  <C-Tab>37
+nmenu Htm&l.&table.table\ &7\ rows.&3\ columns<Tab>C-Tab\ 37  <C-Tab>37
+imenu Htm&l.&table.table\ &7\ rows.&4\ columns<Tab>C-Tab\ 47  <C-Tab>47
+nmenu Htm&l.&table.table\ &7\ rows.&4\ columns<Tab>C-Tab\ 47  <C-Tab>47
+imenu Htm&l.&table.table\ &7\ rows.&5\ columns<Tab>C-Tab\ 57  <C-Tab>57
+nmenu Htm&l.&table.table\ &7\ rows.&5\ columns<Tab>C-Tab\ 57  <C-Tab>57
+imenu Htm&l.&table.table\ &7\ rows.&6\ columns<Tab>C-Tab\ 67  <C-Tab>67
+nmenu Htm&l.&table.table\ &7\ rows.&6\ columns<Tab>C-Tab\ 67  <C-Tab>67
+imenu Htm&l.&table.table\ &7\ rows.&7\ columns<Tab>C-Tab\ 77  <C-Tab>77
+nmenu Htm&l.&table.table\ &7\ rows.&7\ columns<Tab>C-Tab\ 77  <C-Tab>77
+amenu Htm&l.-sep2-      :
+imenu Htm&l.html\ header<Tab>`hh        `hh
+nmenu Htm&l.html\ header<Tab>`hh        `hh
+imenu Htm&l.html\ footer<Tab>`hf       `hf
+nmenu Htm&l.html\ footer<Tab>`hf       `hf
+imenu Htm&l.s&cript<Tab>`sc             `sc
+nmenu Htm&l.s&cript<Tab>`sc             `sc
+vmenu Htm&l.s&cript<Tab>`sc             `sc
+amenu Htm&l.-sep3-      :
+imenu Htm&l.make\ html\ tag<Tab>F4      <F4>
+vmenu Htm&l.make\ html\ tag<Tab>F4      <F4>
+
+
+nmap <buffer> `nw a nowrap="nowrap"
+imap <buffer> `nw <Left><C-o>`nw
+
+imap <buffer> `br <br>
+nmap <buffer> `br a`br
+imap <buffer> ,, <br>
+inoremap <buffer> -- &ndash;
+inoremap <buffer> --- &mdash;
+imap <buffer> `` &bdquo;
+imap <buffer> '' &ldquo;
+
+imap <buffer> `hr <hr width="" align=""><C-o>3F"
+nmap <buffer> `hr a`hr
+
+imap <buffer> `<F7> <dtml-var REQUEST>
+nmap <buffer> `<F7> a`<F7>
+nmap <buffer> <F12> a<F12>
+imap <buffer> <F12> <dtml-comment><!--  --></dtml-comment><Esc>F!3la
+vmap <buffer> <F12> <Esc>`>a --></dtml-comment><Esc>`<i<dtml-comment><!-- 
+omap <buffer> <F12> <Esc><F12>
+imap <buffer> `<F12> <dtml-comment><!--
+imap <buffer> ``<F12> --></dtml-comment>
+nmap <buffer> `<F12> a<dtml-comment><!--
+nmap <buffer> ``<F12> a--></dtml-comment>
+
+imap <buffer> `<F11> &dtml-;<Esc>i
+nmap <buffer> `<F11> a`<F11>
+imap <buffer> `<F10> _['sequence-item']['']<ESC>F'i
+nmap <buffer> `<F10> a_['sequence-item']['']<ESC>F'i
+imap <buffer> `<F9> REQUEST['']<ESC>F'i
+nmap <buffer> `<F9> aREQUEST['']<ESC>F'i
+imap <buffer> <F8> <dtml-else>
+imap <buffer> `<F8> <dtml-elif ""><Esc>hi
+nmap <buffer> <F8> a<dtml-else>
+nmap <buffer> `<F8> a<dtml-elif ""><Esc>hi
+imap <buffer> <F7> <dtml-var ""><ESC>F"i
+nmap <buffer> <F7> a<F7>
+imap <buffer> <F6> <dtml-call "REQUEST.set('', )"><ESC>F'i
+nmap <buffer> <F6> a<dtml-call "REQUEST.set('', )"><ESC>F'i
+imap <buffer> <F5> ~<ESC>b"jyt~i<dtml-<ESC>f~a <Esc>hxa""><ESC>mja<Cr></dtml-<ESC>"jpa><ESC>O  <ESC>`j2F"a
+imap <buffer> <F4> ><ESC>b"jyf>i<<ESC>f>a</<ESC>"jpF>a
+vmap <buffer> <F4> <Esc>`>a</<Esc>`<i><Esc>b"jyf>i<<ESC>`>4l"jpa
+" pokud jdeme pres new line a za oznacenym textem jeste neco pokracuje, je treba davat prednost tomuto
+vmap <buffer> `<F4> <Esc>`>a</<Esc>`<i><Esc>b"jyf>i<<ESC>`>2l"jpa
+imap <buffer> <F3> &nbsp;
+imap <buffer> `<F3> &bdquo;
+imap <buffer> ``<F3> &ldquo;
+nmap <buffer> `<F3> a`<F3>
+nmap <buffer> ``<F3> a``<F3>
+vmap <buffer> `<F3> <Esc>`>``<F3><Esc>`<i`<F3>
+nmap <buffer> <F3> cl&nbsp;<Esc>
+
+imap <buffer> `if <dtml-if ""></dtml-if><M-Left><Esc>hi
+vmap <buffer> `if <Esc>`>a</dtml-if><Esc>`<i<dtml-if ""><Esc>hi
+nmap <buffer> `if a`if
+imap <buffer> `ef <dtml-if ""><dtml-else></dtml-if><M-Left><M-Left><Esc>hi
+vmap <buffer> `ef <Esc>`>a<dtml-else></dtml-if><Esc>`<i<dtml-if ""><Esc>hi
+nmap <buffer> `ef a`ef
+imap <buffer> `fef <dtml-if ""><dtml-elif ""></dtml-if><M-Left><M-Left><Esc>hi
+vmap <buffer> `fef <Esc>`>a<dtml-elif ""></dtml-if><Esc>`<i<dtml-if ""><Esc>hi
+nmap <buffer> `fef a`fef
+imap <buffer> `feef <dtml-if ""><dtml-elif ""><dtml-else></dtml-if><M-Left><M-Left><M-Left><Esc>hi
+vmap <buffer> `feef <Esc>`>a<dtml-elif ""><dtml-else></dtml-if><Esc>`<i<dtml-if ""><Esc>hi
+nmap <buffer> `feef a`feef
+
+imap <buffer> `in <dtml-in ""></dtml-in><M-Left><Esc>hi
+vmap <buffer> `in <Esc>`>a</dtml-in><Esc>`<i<dtml-in ""><Esc>hi
+nmap <buffer> `in a`in
+imap <buffer> `en <dtml-in ""><dtml-else></dtml-in><M-Left><M-Left><Esc>hi
+vmap <buffer> `en <Esc>`>a<dtml-else></dtml-in><Esc>`<i<dtml-in ""><Esc>hi
+nmap <buffer> `en a`en
+
+imap <buffer> `try <dtml-try><dtml-except></dtml-try><M-Left><M-Left>
+vmap <buffer> `try <Esc>`>a<dtml-except></dtml-try><Esc>`<i<dtml-try><Esc>`>10la<M-Right>
+nmap <buffer> `try a`try
+
+imap <buffer> `ff <Esc>o<form name="" method="post" action=""><Cr></form><Esc>O<Esc>k^f"a
+nmap <buffer> `ff a<Esc>o<form name="" method="post" action=""><Cr></form><Esc>O<Esc>k^f"a
+vmap <buffer> `ff <Esc>`>a</form><Esc>`<i<form name="" method="post" action=""><Esc>F<f"a
+imap <buffer> `fh <form name="" method="post" action=""><Esc>F<f"a
+nmap <buffer> `fh a<form name="" method="post" action=""><Esc>F<f"a
+imap <buffer> `im <img src="" border="0" alt="" width="" height=""><Esc>F<f"a
+nmap <buffer> `im a`im
+imap <buffer> `tx <input type="text" name="" value="" size="" maxlength=""><Esc>4F=la
+imap <buffer> `pwd <input type="password" name="" value="" size="" maxlength=""><Esc>4F=la
+imap <buffer> `hd <input type="hidden" name="" value=""><Esc>2F=la
+imap <buffer> `rd <input type="radio" name="" value=""><Esc>2F=la
+imap <buffer> `rs <input type="reset" name="reset" value="" class=""><Esc>2F=la
+imap <buffer> `sb <input type="submit" name="" value="" class=""><Esc>3F=la
+imap <buffer> `sl select<F4><Cr><Esc>O<Esc>k$i name=""<Esc>i
+imap <buffer> `op option<F4><Esc>i value=""<Esc>i
+imap <buffer> `ta textarea<F4><Esc>i name="" cols="" rows=""<Esc>3F=la
+imap <buffer> `ft </form>
+imap <buffer> `ch <input type="checkbox" name="" value=""><Esc>2F=la
+nmap <buffer> `ch a`ch
+imap <buffer> `bt <input type="button" name="" value="" class="" onclick=""><Esc>4F=la
+nmap <buffer> `bt a`bt
+nmap <buffer> `tx a`tx
+nmap <buffer> `hd a<input type="hidden" name="" value=""><Esc>2F=la
+nmap <buffer> `rd a<input type="radio" name="" value=""><Esc>2F=la
+nmap <buffer> `rs a<input type="reset" name="reset" value=""><Esc>hi
+nmap <buffer> `sb a`sb
+nmap <buffer> `sl aselect<F4><Cr><Esc>O<Esc>k$i name=""<Esc>i
+nmap <buffer> `op aoption<F4><Esc>i value=""<Esc>i
+nmap <buffer> `ta a`ta
+nmap <buffer> `ft a</form>
+vmap <buffer> `ta <Esc>`>a</textarea><Esc>`<i<textarea name="" cols="" rows=""><Esc>3F=la
+vmap <buffer> `op <Esc>`>a</option><Esc>`<i<option value=""><Esc>hi
+imap <buffer> `ss span<F4><Esc>i class=""<Esc>i
+nmap <buffer> `ss a`ss
+vmap <buffer> `ss <Esc>`>a</span><Esc>`<i<span class=""><Esc>hi
+imap <buffer> `dv div<F4><Esc>i class=""<Esc>i
+nmap <buffer> `dv a`dv
+vmap <buffer> `dv <Esc>`>a</div><Esc>`<i<div class=""><Esc>hi
+imap <buffer> `aa <a href=""></a><Esc>F"i
+nmap <buffer> `aa a`aa
+vmap <buffer> `aa <Esc>`>a</a><Esc>`<i<a href=""><Esc>hi
+imap <buffer> *uv &bdquo;&ldquo;<C-o>6h
+nmap <buffer> *uv a*uv
+vmap <buffer> *uv <Esc>`>a&ldquo;<Esc>`<i&bdquo;
+imap <buffer> *- &ndash;
+imap <buffer> *-- &mdash;
+
+imap <buffer> <M-Right> <Esc>f>a
+imap <buffer> <M-Left> <Esc>F<i
+nmap <buffer> <M-Right> f>a
+nmap <buffer> <M-Left> F<i
+
+imap <buffer> <C-Space> <Esc>f=f"a
+nmap <buffer> <C-Space> f=f"l
+
+imap <buffer> `hh <Esc>O<Esc>0d$a<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><Cr><Cr><html lang="cs" dir="ltr"><Cr><head><Cr><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><Cr><meta http-equiv="Content-Style-Type" content="text/css"><Cr><meta http-equiv="Content-Script-Type" content="text/javascript"><Cr><title></title><Cr></head><Cr><body bgcolor="#ffffff" text="#000000"><Cr>
+nmap <buffer> `hh a`hh
+
+imap <buffer> `hf <Esc>o<Esc>0d$a</body></html><Esc>k$a
+nmap <buffer> `hf a`hf
+
+imap <buffer> `shd <dtml-var standard_html_header>
+imap <buffer> `sft <dtml-var standard_html_footer>
+imap <buffer> `th <table border="0" cellpadding="3" cellspacing="0"><tbody>
+imap <buffer> `tf </tbody></table>
+nmap <buffer> `shd a<dtml-var standard_html_header>
+nmap <buffer> `sft a<dtml-var standard_html_footer>
+nmap <buffer> `th a`th
+nmap <buffer> `tf a`tf
+imap <buffer> `sc <C-o>o<script language="JavaScript" type="text/javascript" defer="defer" charset="utf-8"><Cr><!--<Cr>//--><Cr></script><Esc>kO
+nmap <buffer> `sc a`sc
+vmap <buffer> `sc <Esc>`>a<Cr><Cr><Esc>k0d$a//--><Cr></script><Esc>`<i<Cr><Esc>O<Esc>0d$a<script language="JavaScript" type="text/javascript" defer="defer" charset="utf-8"><Cr><!--
+
+imap <buffer> `td td<F4>
+nmap <buffer> `td a`td
+vmap <buffer> `td <Esc>`>a</td><Esc>`<i<td>
+
+imap <buffer> <C-Tab>td td<F4><Cr><Esc>O  
+nmap <buffer> <C-Tab>td a<C-Tab>td
+vmap <buffer> <C-Tab>td <Esc>`>a<Cr></td><Cr><Esc>`<i<Cr><Esc>O<td>
+
+vmap <buffer> <C-Tab>tr <Esc>`>a</tr><Esc>`<i<tr>
+
+imap <buffer> <C-Tab>tr1 tr<F4><Cr><Esc>O  <C-Tab>td
+nmap <buffer> <C-Tab>tr1 a<C-Tab>tr1
+
+imap <buffer> <C-Tab>tr2 <C-Tab>tr1<Esc>k"jy2j2j"jp2k$a
+nmap <buffer> <C-Tab>tr2 a<C-Tab>tr2
+
+imap <buffer> <C-Tab>tr3 <C-Tab>tr1<Esc>k"jy2j2j"j2p2k$a
+nmap <buffer> <C-Tab>tr3 a<C-Tab>tr3
+
+imap <buffer> <C-Tab>tr4 <C-Tab>tr1<Esc>k"jy2j2j"j3p2k$a
+nmap <buffer> <C-Tab>tr4 a<C-Tab>tr4
+
+imap <buffer> <C-Tab>tr5 <C-Tab>tr1<Esc>k"jy2j2j"j4p2k$a
+nmap <buffer> <C-Tab>tr5 a<C-Tab>tr5
+
+imap <buffer> <C-Tab>tr6 <C-Tab>tr1<Esc>k"jy2j2j"j5p2k$a
+nmap <buffer> <C-Tab>tr6 a<C-Tab>tr6
+
+imap <buffer> <C-Tab>tr7 <C-Tab>tr1<Esc>k"jy2j2j"j6p2k$a
+nmap <buffer> <C-Tab>tr7 a<C-Tab>tr7
+
+
+imap <buffer> <C-Tab>11 <Esc>o`th<Cr><C-Tab>tr1<Esc>2jo`tf<Esc>3k$a
+nmap <buffer> <C-Tab>11 a<C-Tab>11
+
+imap <buffer> <C-Tab>21 <Esc>o`th<Cr><C-Tab>tr2<Esc>5jo`tf<Esc>6k$a
+nmap <buffer> <C-Tab>21 a<C-Tab>21
+
+imap <buffer> <C-Tab>31 <Esc>o`th<Cr><C-Tab>tr3<Esc>8jo`tf<Esc>9k$a
+nmap <buffer> <C-Tab>31 a<C-Tab>31
+
+imap <buffer> <C-Tab>41 <Esc>o`th<Cr><C-Tab>tr4<Esc>11jo`tf<Esc>12k$a
+nmap <buffer> <C-Tab>41 a<C-Tab>41
+
+imap <buffer> <C-Tab>51 <Esc>o`th<Cr><C-Tab>tr5<Esc>14jo`tf<Esc>15k$a
+nmap <buffer> <C-Tab>51 a<C-Tab>51
+
+imap <buffer> <C-Tab>61 <Esc>o`th<Cr><C-Tab>tr6<Esc>17jo`tf<Esc>18k$a
+nmap <buffer> <C-Tab>61 a<C-Tab>61
+
+imap <buffer> <C-Tab>71 <Esc>o`th<Cr><C-Tab>tr7<Esc>20jo`tf<Esc>21k$a
+nmap <buffer> <C-Tab>71 a<C-Tab>71
+
+imap <buffer> <C-Tab>12 <Esc>o`th<Cr><C-Tab>tr1<Esc>2jo`tf<Esc>5k"jy4j4j"jp3k$a
+nmap <buffer> <C-Tab>12 a<C-Tab>12
+
+imap <buffer> <C-Tab>22 <Esc>o`th<Cr><C-Tab>tr2<Esc>5jo`tf<Esc>8k"jy7j7j"jp6k$a
+nmap <buffer> <C-Tab>22 a<C-Tab>22
+
+imap <buffer> <C-Tab>32 <Esc>o`th<Cr><C-Tab>tr3<Esc>8jo`tf<Esc>11k"jy10j10j"jp9k$a
+nmap <buffer> <C-Tab>32 a<C-Tab>32
+
+imap <buffer> <C-Tab>42 <Esc>o`th<Cr><C-Tab>tr4<Esc>11jo`tf<Esc>14k"jy13j13j"jp12k$a
+nmap <buffer> <C-Tab>42 a<C-Tab>42
+
+imap <buffer> <C-Tab>52 <Esc>o`th<Cr><C-Tab>tr5<Esc>14jo`tf<Esc>17k"jy16j16j"jp15k$a
+nmap <buffer> <C-Tab>52 a<C-Tab>52
+
+imap <buffer> <C-Tab>62 <Esc>o`th<Cr><C-Tab>tr6<Esc>17jo`tf<Esc>20k"jy19j19j"jp18k$a
+nmap <buffer> <C-Tab>62 a<C-Tab>62
+
+imap <buffer> <C-Tab>72 <Esc>o`th<Cr><C-Tab>tr7<Esc>20jo`tf<Esc>23k"jy22j22j"jp21k$a
+nmap <buffer> <C-Tab>72 a<C-Tab>72
+
+imap <buffer> <C-Tab>13 <Esc>o`th<Cr><C-Tab>tr1<Esc>2jo`tf<Esc>5k"jy4j4j"j2p3k$a
+nmap <buffer> <C-Tab>13 a<C-Tab>13
+
+imap <buffer> <C-Tab>23 <Esc>o`th<Cr><C-Tab>tr2<Esc>5jo`tf<Esc>8k"jy7j7j"j2p6k$a
+nmap <buffer> <C-Tab>23 a<C-Tab>23
+
+imap <buffer> <C-Tab>33 <Esc>o`th<Cr><C-Tab>tr3<Esc>8jo`tf<Esc>11k"jy10j10j"j2p9k$a
+nmap <buffer> <C-Tab>33 a<C-Tab>33
+
+imap <buffer> <C-Tab>43 <Esc>o`th<Cr><C-Tab>tr4<Esc>11jo`tf<Esc>14k"jy13j13j"j2p12k$a
+nmap <buffer> <C-Tab>43 a<C-Tab>43
+
+imap <buffer> <C-Tab>53 <Esc>o`th<Cr><C-Tab>tr5<Esc>14jo`tf<Esc>17k"jy16j16j"j2p15k$a
+nmap <buffer> <C-Tab>53 a<C-Tab>53
+
+imap <buffer> <C-Tab>63 <Esc>o`th<Cr><C-Tab>tr6<Esc>17jo`tf<Esc>20k"jy19j19j"j2p18k$a
+nmap <buffer> <C-Tab>63 a<C-Tab>63
+
+imap <buffer> <C-Tab>73 <Esc>o`th<Cr><C-Tab>tr7<Esc>20jo`tf<Esc>23k"jy22j22j"j2p21k$a
+nmap <buffer> <C-Tab>73 a<C-Tab>73
+
+imap <buffer> <C-Tab>14 <Esc>o`th<Cr><C-Tab>tr1<Esc>2jo`tf<Esc>5k"jy4j4j"j3p3k$a
+nmap <buffer> <C-Tab>14 a<C-Tab>14
+
+imap <buffer> <C-Tab>24 <Esc>o`th<Cr><C-Tab>tr2<Esc>5jo`tf<Esc>8k"jy7j7j"j3p6k$a
+nmap <buffer> <C-Tab>24 a<C-Tab>24
+
+imap <buffer> <C-Tab>34 <Esc>o`th<Cr><C-Tab>tr3<Esc>8jo`tf<Esc>11k"jy10j10j"j3p9k$a
+nmap <buffer> <C-Tab>34 a<C-Tab>34
+
+imap <buffer> <C-Tab>44 <Esc>o`th<Cr><C-Tab>tr4<Esc>11jo`tf<Esc>14k"jy13j13j"j3p12k$a
+nmap <buffer> <C-Tab>44 a<C-Tab>44
+
+imap <buffer> <C-Tab>54 <Esc>o`th<Cr><C-Tab>tr5<Esc>14jo`tf<Esc>17k"jy16j16j"j3p15k$a
+nmap <buffer> <C-Tab>54 a<C-Tab>54
+
+imap <buffer> <C-Tab>64 <Esc>o`th<Cr><C-Tab>tr6<Esc>17jo`tf<Esc>20k"jy19j19j"j3p18k$a
+nmap <buffer> <C-Tab>64 a<C-Tab>64
+
+imap <buffer> <C-Tab>74 <Esc>o`th<Cr><C-Tab>tr7<Esc>20jo`tf<Esc>23k"jy22j22j"j3p21k$a
+nmap <buffer> <C-Tab>74 a<C-Tab>74
+
+imap <buffer> <C-Tab>15 <Esc>o`th<Cr><C-Tab>tr1<Esc>2jo`tf<Esc>5k"jy4j4j"j4p3k$a
+nmap <buffer> <C-Tab>15 a<C-Tab>15
+
+imap <buffer> <C-Tab>25 <Esc>o`th<Cr><C-Tab>tr2<Esc>5jo`tf<Esc>8k"jy7j7j"j4p6k$a
+nmap <buffer> <C-Tab>25 a<C-Tab>25
+
+imap <buffer> <C-Tab>35 <Esc>o`th<Cr><C-Tab>tr3<Esc>8jo`tf<Esc>11k"jy10j10j"j4p9k$a
+nmap <buffer> <C-Tab>35 a<C-Tab>35
+
+imap <buffer> <C-Tab>45 <Esc>o`th<Cr><C-Tab>tr4<Esc>11jo`tf<Esc>14k"jy13j13j"j4p12k$a
+nmap <buffer> <C-Tab>45 a<C-Tab>45
+
+imap <buffer> <C-Tab>55 <Esc>o`th<Cr><C-Tab>tr5<Esc>14jo`tf<Esc>17k"jy16j16j"j4p15k$a
+nmap <buffer> <C-Tab>55 a<C-Tab>55
+
+imap <buffer> <C-Tab>65 <Esc>o`th<Cr><C-Tab>tr6<Esc>17jo`tf<Esc>20k"jy19j19j"j4p18k$a
+nmap <buffer> <C-Tab>65 a<C-Tab>65
+
+imap <buffer> <C-Tab>75 <Esc>o`th<Cr><C-Tab>tr7<Esc>20jo`tf<Esc>23k"jy22j22j"j4p21k$a
+nmap <buffer> <C-Tab>75 a<C-Tab>75
+
+imap <buffer> <C-Tab>16 <Esc>o`th<Cr><C-Tab>tr1<Esc>2jo`tf<Esc>5k"jy4j4j"j5p3k$a
+nmap <buffer> <C-Tab>16 a<C-Tab>16
+
+imap <buffer> <C-Tab>26 <Esc>o`th<Cr><C-Tab>tr2<Esc>5jo`tf<Esc>8k"jy7j7j"j5p6k$a
+nmap <buffer> <C-Tab>26 a<C-Tab>26
+
+imap <buffer> <C-Tab>36 <Esc>o`th<Cr><C-Tab>tr3<Esc>8jo`tf<Esc>11k"jy10j10j"j5p9k$a
+nmap <buffer> <C-Tab>36 a<C-Tab>36
+
+imap <buffer> <C-Tab>46 <Esc>o`th<Cr><C-Tab>tr4<Esc>11jo`tf<Esc>14k"jy13j13j"j5p12k$a
+nmap <buffer> <C-Tab>46 a<C-Tab>46
+
+imap <buffer> <C-Tab>56 <Esc>o`th<Cr><C-Tab>tr5<Esc>14jo`tf<Esc>17k"jy16j16j"j5p15k$a
+nmap <buffer> <C-Tab>56 a<C-Tab>56
+
+imap <buffer> <C-Tab>66 <Esc>o`th<Cr><C-Tab>tr6<Esc>17jo`tf<Esc>20k"jy19j19j"j5p18k$a
+nmap <buffer> <C-Tab>66 a<C-Tab>66
+
+imap <buffer> <C-Tab>76 <Esc>o`th<Cr><C-Tab>tr7<Esc>20jo`tf<Esc>23k"jy22j22j"j5p21k$a
+nmap <buffer> <C-Tab>76 a<C-Tab>76
+
+imap <buffer> <C-Tab>17 <Esc>o`th<Cr><C-Tab>tr1<Esc>2jo`tf<Esc>5k"jy4j4j"j6p3k$a
+nmap <buffer> <C-Tab>17 a<C-Tab>17
+
+imap <buffer> <C-Tab>27 <Esc>o`th<Cr><C-Tab>tr2<Esc>5jo`tf<Esc>8k"jy7j7j"j6p6k$a
+nmap <buffer> <C-Tab>27 a<C-Tab>27
+
+imap <buffer> <C-Tab>37 <Esc>o`th<Cr><C-Tab>tr3<Esc>8jo`tf<Esc>11k"jy10j10j"j6p9k$a
+nmap <buffer> <C-Tab>37 a<C-Tab>37
+
+imap <buffer> <C-Tab>47 <Esc>o`th<Cr><C-Tab>tr4<Esc>11jo`tf<Esc>14k"jy13j13j"j6p12k$a
+nmap <buffer> <C-Tab>47 a<C-Tab>47
+
+imap <buffer> <C-Tab>57 <Esc>o`th<Cr><C-Tab>tr5<Esc>14jo`tf<Esc>17k"jy16j16j"j6p15k$a
+nmap <buffer> <C-Tab>57 a<C-Tab>57
+
+imap <buffer> <C-Tab>67 <Esc>o`th<Cr><C-Tab>tr6<Esc>17jo`tf<Esc>20k"jy19j19j"j6p18k$a
+nmap <buffer> <C-Tab>67 a<C-Tab>67
+
+imap <buffer> <C-Tab>77 <Esc>o`th<Cr><C-Tab>tr7<Esc>20jo`tf<Esc>23k"jy22j22j"j6p21k$a
+nmap <buffer> <C-Tab>77 a<C-Tab>77
+
+set syntax=dtml
+set dictionary=$VIM/svim/dtmldict

@@ -1,0 +1,9 @@
+" settings for the HP monitor
+" set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
+set guifont=DejaVu\ Sans\ Mono\ 11
+
+
+" nastavime monitor
+set lines=105
+set columns=131
+

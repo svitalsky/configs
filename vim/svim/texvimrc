@@ -1,0 +1,219 @@
+let g:tex_isk="48-57,a-z,A-Z,163,165,166,169-172,174,175,179,181-182,185-188,190-254"
+
+
+imap <buffer> <silent> <F3> ~
+nmap <buffer> <silent> <F3> r~
+imap <buffer> <silent> <C-Space> ~
+nmap <buffer> <silent> <C-Space> <F3>
+
+" \ - kvuli ceske klavesnici
+imap <buffer> <silent> <F4><F4> \
+nmap <buffer> <silent> <F4><F4> a<F4><F4>
+
+" emph
+imap <buffer> <silent> <F4>e \emph{}<Left>
+nmap <buffer> <silent> <F4>e a<F4>e
+vmap <buffer> <silent> <F4>e <Esc>`>a}<Esc>`<i\emph{
+imap <buffer> ,,e <F4>e
+
+" uvozovky (ceske)
+imap <buffer> <silent> <F4>u \uv{}<Left>
+nmap <buffer> <silent> <F4>u a<F4>u
+vmap <buffer> <silent> <F4>u <Esc>`>a}<Esc>`<i\uv{
+imap <buffer> ,,u <F4>u
+
+" italika
+imap <buffer> <silent> <F4>i {\it }<Left>
+nmap <buffer> <silent> <F4>i a<F4>i
+vmap <buffer> <silent> <F4>i <Esc>`>a}<Esc>`<i{\it 
+imap <buffer> ,,i <F4>i
+
+" tucne
+imap <buffer> <silent> <F4>b {\bf }<Left>
+nmap <buffer> <silent> <F4>b a<F4>b
+vmap <buffer> <silent> <F4>b <Esc>`>a}<Esc>`<i{\bf 
+imap <buffer> ,,b <F4>b
+
+" small caps
+imap <buffer> <silent> <F4>s {\sc }<Left>
+nmap <buffer> <silent> <F4>s a<F4>s
+vmap <buffer> <silent> <F4>s <Esc>`>a}<Esc>`<i{\sc 
+imap <buffer> ,,s <F4>s
+
+" latex verb prostredi
+imap <buffer> <silent> <F4>v \verb++<Left>
+nmap <buffer> <silent> <F4>v a<F4>v
+vmap <buffer> <silent> <F4>v <Esc>`>a+<Esc>`<i\verb+<Esc>f+
+
+" skupina
+imap <buffer> <silent> <F4>g {}<Left>
+nmap <buffer> <silent> <F4>g a<F4>g
+vmap <buffer> <silent> <F4>g <Esc>`>a}<Esc>`<i{
+imap <buffer> <silent> ,,g <F4>g
+
+nmap <buffer> <silent> ,bi O<Esc>i\begin{itemize}<Esc>j
+nmap <buffer> <silent> ,ei o<Esc>i\end{itemize}<Esc>
+nmap <buffer> <silent> ,u cl\uv{<Esc>nr}
+nmap <buffer> <silent> ,p O\pause<Esc>j
+nmap <buffer> <silent> ,i I\item <Esc>
+
+fun! TeXComment(start, end)
+  if a:start > a:end
+    " copajeto toleto, toleto ne
+    return
+  endif
+
+  " radek po radku projedeme cely scope ve dvou cyklech
+  " v prvnim zjistime nejmensi pocet uvodnich mezer na radku - chceme udrzet indent bloku,
+  " ale taky komentitka pekne v lajne
+  " ve druhem udelame komentare nebo odkomentujeme
+
+  " prvni cyklus
+  let blokind = 10000           " proste hodne velky indent, no
+  let cur = a:start
+  while cur <= a:end
+    let curstr = getline(cur)
+    let delka = strlen(curstr)
+    if delka > 0                " prazdne ignorujeme
+      let ii = 0                " iterator
+      while (ii < delka) && (curstr[ii] == " ")    " hledame prvni ne-mezeru
+        let ii = ii + 1
+      endwhile
+      if ii < delka             " aby nebyl cely radek z mezer
+        if ii < blokind
+          let blokind = ii
+        endif
+      endif
+    endif
+    let cur = cur + 1           " popojedem
+  endwhile
+
+  " druhy cyklus
+  let cur = a:start
+  while cur <= a:end
+    let curstr = getline(cur)
+    let delka = strlen(curstr)
+    if delka > 0    " prazdne ignorujeme
+      let ii = 0    " iterator
+      let res = ""    " buffer pro vysledek
+      while (ii < delka) && (ii < blokind)    " uvodni mezery nechame jak jsou
+        let res = res . curstr[ii]
+        let ii = ii + 1
+      endwhile
+
+      if ii < delka    " jeste neco zbylo?
+        if curstr[ii] == "%"    " prvni znak je komentitko - toz odkomentujmez to
+          if curstr[ii + 1] == " "    " za nim moje mezera pro vzhled - pryc s ni (jestli tam patri, smula)
+            while (ii + 2) < delka    " pridej zbytek odkomentovaneho radku
+              let res = res . curstr[ii + 2]
+              let ii = ii + 1
+            endwhile
+          else                        " zadna hezka mezera, asi rucni komentar
+            while (ii + 1) < delka    " opet pridej zbytek radku
+              let res = res . curstr[ii + 1]
+              let ii = ii + 1
+            endwhile
+          endif
+        else                      " prvni neprazdny neni komentitko - zakomentujmez
+          let res = res . "% "    " za pripadne mezery (dodrzime indent) pridame komentitko a hezkou mezirku
+          while ii < delka    " dodame zbytek radku
+            let res = res . curstr[ii]
+            let ii = ii + 1
+          endwhile
+        endif
+        call setline(cur, res)    " zapiseme vysledek
+      endif
+    endif
+    let cur = cur + 1             " a poposkocime o radek
+  endwhile
+  return
+endfun
+
+command! -nargs=0 -range -buffer TeXComment call TeXComment(<line1>, <line2>)
+
+vmap <buffer> <silent> <F12> :TeXComment<Cr>
+nmap <buffer> <silent> <F12> :TeXComment<Cr>
+imap <buffer> <silent> <F12> % 
+
+if !exists("b:current_syntax")
+  set syntax=tex
+elseif b:current_syntax != "tex"
+  syntax clear
+  set syntax=tex
+endif
+
+" let aaa = expand("%:t:r")     " odsud
+" let bbb = getcwd()
+" call setline(1, aaa)
+" !echo expand("%:t:r") >> $HOME/texfiles
+" !aaa                          " az pocud je to slepa cesta
+
+
+
+" make dvi
+" se shiftem jen provede operaci, bez prohlizeni
+nmap <buffer> <S-F8> mj:set makeprg=make\ dvi\ -f\ $VIM/svim/vimtexuj.Makefile\ TEXFILE=%<<Cr>:w<Cr>:make<Cr>`j
+imap <buffer> <S-F8> <Esc><S-F8>a
+nmap <buffer> <S-F18> mj:set makeprg=make\ dvi\ -f\ $VIM/svim/vimtexuj.Makefile\ TEXFILE=%<<Cr>:w<Cr>:make<Cr>`j
+imap <buffer> <S-F18> <Esc><S-F18>a
+nmap <buffer> <F8> mj:set makeprg=make\ dvi\ -f\ $VIM/svim/vimtexuj.Makefile\ TEXFILE=%<<Cr>:w<Cr>:make<Cr>:!run_xdvi %<<Cr><Cr>`j
+imap <buffer> <F8> <Esc><F8>a
+" make pdf
+nmap <buffer> <S-F7> mj:set makeprg=make\ pdf\ -f\ $VIM/svim/vimtexuj.Makefile\ TEXFILE=%<<Cr>:w<Cr>:make<Cr>`j
+imap <buffer> <S-F7> <Esc><S-F7>a
+nmap <buffer> <S-F17> mj:set makeprg=make\ pdf\ -f\ $VIM/svim/vimtexuj.Makefile\ TEXFILE=%<<Cr>:w<Cr>:make<Cr>`j
+imap <buffer> <S-F17> <Esc><S-F17>a
+nmap <buffer> <F7> mj:set makeprg=make\ pdf\ -f\ $VIM/svim/vimtexuj.Makefile\ TEXFILE=%<<Cr>:w<Cr>:make<Cr>:!run_evince %<<Cr><Cr>`j
+imap <buffer> <F7> <Esc><F7>a
+nmap <buffer> <C-F7> mj:set makeprg=make\ pdf\ -f\ $VIM/svim/vimtexuj.Makefile\ TEXFILE=%<<Cr>:w<Cr>:make<Cr>:!run_okular %<<Cr><Cr>`j
+imap <buffer> <C-F7> <Esc><C-F7>a
+" make PostScript
+nmap <buffer> <S-F6> mj:set makeprg=make\ dvi\ -f\ $VIM/svim/vimtexuj.Makefile\ TEXFILE=%<<Cr>:w<Cr>:make<Cr>:!dvips %<.dvi -o %<.ps<Cr>`j
+imap <buffer> <S-F6> <Esc><S-F6>a
+nmap <buffer> <S-F16> mj:set makeprg=make\ dvi\ -f\ $VIM/svim/vimtexuj.Makefile\ TEXFILE=%<<Cr>:w<Cr>:make<Cr>:!dvips %<.dvi -o %<.ps<Cr>`j
+imap <buffer> <S-F16> <Esc><S-F16>a
+nmap <buffer> <F6> mj:set makeprg=make\ dvi\ -f\ $VIM/svim/vimtexuj.Makefile\ TEXFILE=%<<Cr>:w<Cr>:make<Cr>:!dvips %<.dvi -o %<.ps<Cr>:!run_gv %<.ps<Cr><Cr>`j
+imap <buffer> <F6> <Esc><F6>a
+
+" kvuli vlne si nastavime autoread
+set autoread
+imap <buffer> <S-F2> <C-o>:!vlna %<Cr>
+nmap <buffer> <S-F2> :!vlna %<Cr>
+vmap <buffer> <S-F2> <Esc>:!vlna %<Cr>
+imap <buffer> <S-F12> <C-o>:!vlna %<Cr>
+nmap <buffer> <S-F12> :!vlna %<Cr>
+vmap <buffer> <S-F12> <Esc>:!vlna %<Cr>
+
+" otevri log (jednoduse bez testovani)
+nmap <buffer> <F5> :sp %<.log<Cr>
+imap <buffer> <F5> <Esc><F5>
+
+" non GUI to bude ignorovat
+" nmenu Te&X.Make\ &DVI<Tab>Shift+F8              <S-F8>
+" imenu Te&X.Make\ &DVI<Tab>Shift+F8              <S-F8>
+nmenu Te&X.Make\ &DVI<Tab>Shift+F8              <S-F18>
+imenu Te&X.Make\ &DVI<Tab>Shift+F8              <S-F18>
+nmenu Te&X.Make\ and\ &View\ DVI<Tab>F8         <F8>
+imenu Te&X.Make\ and\ &View\ DVI<Tab>F8         <F8>
+amenu Te&X.-sep1-       :
+" nmenu Te&X.Make\ PD&F<Tab>Shift+F7              <S-F7>
+" imenu Te&X.Make\ PD&F<Tab>Shift+F7              <S-F7>
+nmenu Te&X.Make\ PD&F<Tab>Shift+F7              <S-F17>
+imenu Te&X.Make\ PD&F<Tab>Shift+F7              <S-F17>
+nmenu Te&X.Make\ and\ View\ &PDF<Tab>F7         <F7>
+imenu Te&X.Make\ and\ View\ &PDF<Tab>F7         <F7>
+amenu Te&X.-sep2-       :
+" nmenu Te&X.Make\ Pos&tScript<Tab>Shift+F6       <S-F6>
+" imenu Te&X.Make\ Pos&tScript<Tab>Shift+F6       <S-F6>
+nmenu Te&X.Make\ Pos&tScript<Tab>Shift+F6       <S-F16>
+imenu Te&X.Make\ Pos&tScript<Tab>Shift+F6       <S-F16>
+nmenu Te&X.Make\ and\ View\ Post&Script<Tab>F6  <F6>
+imenu Te&X.Make\ and\ View\ Post&Script<Tab>F6  <F6>
+amenu Te&X.-sep3-       :
+nmenu Te&X.View\ &Log<Tab>F5                    <F5>
+imenu Te&X.View\ &Log<Tab>F5                    <F5>
+
+
+set dictionary=$VIM/svim/texdict
+set indentexpr=
+set smartindent

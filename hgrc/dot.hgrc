@@ -1,0 +1,154 @@
+[ui]
+username = Marcel Svitalsky <marcel.svitalsky@company.com>
+merge = vimdiff
+# merge = meld
+# logtemplate = '[{phase}] {desc} ({node|short})\\n'
+# style = changelog
+ignore = ~/.hgconf/hgignore
+# interface = curses
+editor = vim
+
+[extensions]
+color =
+purge =
+rebase =
+hgext.graphlog =
+hgext.extdiff =
+hgext.convert =
+hgext.schemes =
+# fetch is an "unloved extension" (see hg wiki) and I do not use it anyway
+# fetch =
+# hgsubversion = ~/.hgconf/hgsubversion/hgsubversion
+hgext.bookmarks =
+# hggit = ~/.hgconf/hg-git/hggit
+mq =
+histedit =
+# cloc = ~/.hgconf/hg-cloc/cloc.py
+pager =
+# hgk =
+# largefiles =
+shelve =
+# it is in fact no-op now, as it was effectively removed in Mercurial 3.0 and later
+# inotify =
+record =
+gpg =
+# hgext.collapse = ~/.hgconf/hgcollapse/hgext/collapse.py
+githelp =
+strip =
+# rebase and graft do better work then transplant
+# transplant =
+churn =
+eol =
+# requires watchman from facebook
+# fsmonitor =
+relink =
+# I probably won't use this one, but I am enabling it just to remember it exists
+share =
+closehead =
+
+[extdiff]
+cmd.vdiff = meld
+# cmd.vdiff = kompare
+# cmd.vdiff = kdiff3
+# cmd.vdiff = tkdiff
+# cmd.vdiff = bcompare
+
+[color]
+# mode = auto
+mode = terminfo
+# status.added = yellow
+# diff.inserted = yellow
+status.added = green
+diff.inserted = green
+
+color.orange=202
+color.lightyellow=191
+color.darkorange=220
+color.brightyellow=226
+
+custom.rev = bold blue
+custom.revloc = bold red
+# custom.decorate = brightyellow
+custom.decorate = yellow
+custom.date = cyan
+custom.author = green
+custom.tag = yellow bold
+custom.bookmarks = orange
+custom.activebookmark = orange bold underline
+custom.descr = white
+
+[diff]
+git = True
+# qit = 1
+
+[mq]
+git = yes
+secret = true
+
+[pager]
+pager = less -FRX
+attend-lg = True
+attend-lg1 = True
+attend-l1 = True
+attend-st = True
+attend-out = True
+attend-o1 = True
+attend-o = True
+attend-in = True
+attend-i1 = True
+attend-i = True
+attend-lg20 = True
+attend-lg30 = True
+
+[alias]
+revert = revert -C
+backout = backout --merge
+cbackout = backout --merge --commit
+qpop = qpop --keep-changes
+qapop = qpop --keep-changes --all
+qpush = qpush --keep-changes
+qapush = qpush --keep-changes --all
+qstatus = status --rev -2:.
+qselect = qselect --reapply
+qsrefresh = qrefresh --short
+qunselect = qselect --none --reapply
+qmove = qpush --move --keep-changes
+qafinish = qfinish --applied
+qqpull = pull --mq
+qqpush = push --mq
+qqupdate = update --mq
+qqup = qqupdate
+qqoutgoing = outgoing --mq --style ~/.hgconf/fancy-one.style
+qqout = qqoutgoing
+qqincoming = incoming --mq --style ~/.hgconf/fancy-one.style
+qqin = qqincoming
+qqfetch = fetch --mq
+qqst = status --mq
+stable = update stable
+devel = update devel
+zav = update @
+stab = update stab
+untrack = rm -Af
+auxil = qnew auxil.patch -m "Modification of the project mind map or other auxiliary files"
+tracked = status -madrc
+qrecord = qrecord -g
+lg = glog -g --style ~/.hgconf/fancy.style
+lg1 = glog -g --style ~/.hgconf/fancy-one.style
+l1 = log -g --style ~/.hgconf/fancy-one.style
+o1 = outgoing --style ~/.hgconf/fancy-one.style
+i1 = incoming --style ~/.hgconf/fancy-one.style
+o = o1
+i = i1
+hed = histedit
+lg20 = lg -l 20
+lg30 = lg -l 30
+h = heads --style ~/.hgconf/fancy-one.style
+
+
+[web]
+style = monoblue
+encoding = utf-8
+
+[phases]
+
+

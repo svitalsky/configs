@@ -1,0 +1,177 @@
+set syntax=cpp
+
+set dictionary=$VIM/svim/cdict
+
+fun! CppComment(start, end)
+  if a:start > a:end
+    " copajeto toleto, toleto ne
+    return
+  endif
+
+  " radek po radku projedeme cely scope ve dvou cyklech
+  " v prvnim zjistime nejmensi pocet uvodnich mezer na radku - chceme udrzet indent bloku,
+  " ale taky komentitka pekne v lajne
+  " ve druhem udelame komentare nebo odkomentujeme
+
+  " prvni cyklus
+  let blokind = 10000           " proste hodne velky indent, no
+  let cur = a:start
+  while cur <= a:end
+    let curstr = getline(cur)
+    let delka = strlen(curstr)
+    if delka > 0                " prazdne ignorujeme
+      let ii = 0                " iterator
+      while (ii < delka) && (ii < blokind) && (curstr[ii] == " ")    " hledame prvni nizsi ne-mezeru
+        let ii = ii + 1
+      endwhile
+      if ii < delka             " aby nebyl cely radek z mezer
+        if ii < blokind
+          let blokind = ii
+        endif
+      endif
+    endif
+    let cur = cur + 1           " popojedem
+  endwhile
+
+  " druhy cyklus
+  let cur = a:start
+  while cur <= a:end
+    let curstr = getline(cur)
+    let delka = strlen(curstr)
+    if delka > 0    " prazdne ignorujeme
+      let ii = 0    " iterator
+      let res = ""    " buffer pro vysledek
+      while (ii < delka) && (ii < blokind)    " uvodni mezery nechame jak jsou
+        let res = res . curstr[ii]
+        let ii = ii + 1
+      endwhile
+
+      if ii < delka    " jeste neco zbylo?
+        if curstr[ii] == "/"    " dle prvniho znaku to muze byt komentitko
+          if curstr[ii + 1] == "/"    " a je to komentitko - toz odkomentujmez to
+            if curstr[ii + 2] == " "    " za nim moje mezera pro vzhled - pryc s ni (jestli tam patri, smula)
+              while (ii + 3) < delka    " pridej zbytek odkomentovaneho radku
+                let res = res . curstr[ii + 3]
+                let ii = ii + 1
+              endwhile
+            else                        " zadna hezka mezera, asi rucni komentar
+              while (ii + 2) < delka    " opet pridej zbytek radku
+                let res = res . curstr[ii + 2]
+                let ii = ii + 1
+              endwhile
+            endif
+          else                      " prvni lomitko, ale druhe ne - zakomentujmez
+            let res = res . "// "   " za pripadne mezery (dodrzime indent) pridame komentitko a hezkou mezeru
+            while ii < delka        " dodame zbytek radku
+              let res = res . curstr[ii]
+              let ii = ii + 1
+            endwhile
+          endif
+        else                      " prvni neprazdny neni lomitko - zakomentujmez
+          let res = res . "// "    " za pripadne mezery (dodrzime indent) pridame komentitko a hezkou mezeru
+          while ii < delka    " dodame zbytek radku
+            let res = res . curstr[ii]
+            let ii = ii + 1
+          endwhile
+        endif
+        call setline(cur, res)    " zapiseme vysledek
+      endif
+    endif
+    let cur = cur + 1             " a poposkocime o radek
+  endwhile
+  return
+endfun
+
+command! -nargs=0 -range -buffer CppComment call CppComment(<line1>, <line2>)
+
+imap <buffer> <F12> // 
+imap <buffer> <F4><F12> /*  */<C-o>2h
+nmap <buffer> <F12> :CppComment<Cr>
+nmap <buffer> <F4><F12> mj0i/*<C-o>$*/<Esc>`j2l
+vmap <buffer> <F12> :CppComment<Cr>
+vmap <buffer> <F4><F12> <Esc>`>a */<Esc>`<i/* 
+
+imap <buffer> <F4><F4> ->
+
+imap <buffer> <F4>bl {<Cr>}<C-o>O  
+nmap <buffer> <F4>bl a<F4>bl
+vmap <buffer> <F4>bl <M-Right><Esc>`>o <Esc>2hC}<Esc>`<O <Esc>2hC{<Left>
+
+imap <buffer> <F4>cl <C-o>oclass  {<Cr>private:<Cr>protected:<Cr>public:<Cr>};<Esc>4k$hi
+nmap <buffer> <F4>cl a<F4>cl
+
+imap <buffer> <F4>fi for (int ii = 0; ii < ; ii++) {<Cr>}<C-o>O  <Esc>k$F;i
+imap <buffer> <F4>fj for (int jj = 0; jj < ; jj++) {<Cr>}<C-o>O  <Esc>k$F;i
+imap <buffer> <F4>fk for (int kk = 0; kk < ; kk++) {<Cr>}<C-o>O  <Esc>k$F;i
+nmap <buffer> <F4>fi a<F4>fi
+nmap <buffer> <F4>fj a<F4>fj
+nmap <buffer> <F4>fk a<F4>fk
+
+imap <buffer> <F4>cfi for (ii = 0; ii < ; ii++) {<Cr>}<C-o>O  <Esc>k$F;i
+imap <buffer> <F4>cfj for (jj = 0; jj < ; jj++) {<Cr>}<C-o>O  <Esc>k$F;i
+imap <buffer> <F4>cfk for (kk = 0; kk < ; kk++) {<Cr>}<C-o>O  <Esc>k$F;i
+nmap <buffer> <F4>cfi a<F4>cfi
+nmap <buffer> <F4>cfj a<F4>cfj
+nmap <buffer> <F4>cfk a<F4>cfk
+
+imap <buffer> <F4>dc dynamic_cast<>()<C-o>F>
+nmap <buffer> <F4>dc a<F4>dc
+vmap <buffer> <F4>dc <Esc>`>a)<Esc>`<idynamic_cast<>(<C-o>F>
+
+imap <buffer> <F4>sc static_cast<>()<C-o>F>
+nmap <buffer> <F4>sc a<F4>sc
+vmap <buffer> <F4>sc <Esc>`>a)<Esc>`<istatic_cast<>(<C-o>F>
+
+imap <buffer> <F4>cc const_cast<>()<C-o>F>
+nmap <buffer> <F4>cc a<F4>cc
+vmap <buffer> <F4>cc <Esc>`>a)<Esc>`<iconst_cast<>(<C-o>F>
+
+imap <buffer> <F4>rc reinterpret_cast<>()<C-o>F>
+nmap <buffer> <F4>rc a<F4>rc
+vmap <buffer> <F4>rc <Esc>`>a)<Esc>`<ireinterpret_cast<>(<C-o>F>
+
+imap <buffer> <F4>wh while () {<Cr>}<Esc>k$F)i
+nmap <buffer> <F4>wh a<F4>wh
+vmap <buffer> <F4>wh <M-Right><Esc>`>o <Esc>2hC}<Esc>`<O <Esc>2hCwhile () {<C-o>2h
+
+imap <buffer> <F4>if if () {<Cr>}<C-o>O  <Esc>k$2hi
+nmap <buffer> <F4>if a<F4>if
+vmap <buffer> <F4>if <M-Right><Esc>`>o <Esc>2hC}<Esc>`<O <Esc>2hCif () {<C-o>2h
+
+imap <buffer> <F4>ef if () {<Cr>} else {<Cr>}<C-o>O  <Esc>kO  <Esc>k$2hi
+nmap <buffer> <F4>ef a<F4>ef
+
+nmap <buffer> <F6> o<Esc>i//------------------------------------------------------------------<C-o>o
+imap <buffer> <F6> <C-o><F6>
+
+nmap <buffer> <F4><F6> 0"jD6o<Esc><F6><F6><Esc>3k<F6><Del><F12>class <C-o>"jp<Tab><Tab><F12>XXX start XXX<Esc>2j012o<Esc><F6><F6><C-o>k<F6><Esc>3ki<F12>class <C-o>"jp<Tab><Tab><F12>XXX end<Esc>8k
+imap <buffer> <F4><F6> <Esc><F4><F6>a
+
+" set includeexpr=substitute(v:fname,'^c\\?\\([^\\/]\\{-\\}\\)\\(\\.h\\)\\{-\\}$','\\1\\.h','g')
+" set includeexpr=substitute(v:fname,'^\\(\\(\\(c\\?\\)\\@=[^\\/]\\{-}[^\\.][^hH]\\)\\|\\(.*\\.[hH]\\)\\)$','\\1','g')
+
+set path=.,/usr/include,/usr/local/include,/usr/local/gcc/include/c++/4.2.4,/usr/local/gcc/include/c++/4.2.4/i686-pc-linux-gnu/bits
+
+
+" syntax match xTab1 /^  / nextgroup=xTab2 containedin=ALL
+" syntax match xTab2 /  /  contained nextgroup=xTab3
+" syntax match xTab3 /  /  contained nextgroup=xTab4
+" syntax match xTab4 /  /  contained nextgroup=xTab5
+" syntax match xTab5 /  /  contained nextgroup=xTab6
+" syntax match xTab6 /  /  contained nextgroup=xTab7
+" syntax match xTab7 /  /  contained nextgroup=xTab2
+
+" highlight xTab1 guibg=#001000
+" highlight xTab3 guibg=#001800
+" highlight xTab5 guibg=#002000
+" highlight xTab7 guibg=#002800
+
+" syntax match xTab1 /^  / nextgroup=xTab2 containedin=ALL
+" syntax match xTab2 /  /  contained nextgroup=xTab3
+" syntax match xTab3 /  /  contained nextgroup=xTab4
+" syntax match xTab4 /  /  contained nextgroup=xTab2
+
+" highlight xTab1 guibg=#0000a0
+" highlight xTab2 guibg=#00a000
+" highlight xTab3 guibg=#000080
+" highlight xTab4 guibg=#008000

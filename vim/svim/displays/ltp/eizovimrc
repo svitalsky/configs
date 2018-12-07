@@ -1,0 +1,9 @@
+" settings for the EIZO monitor
+" set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
+set guifont=DejaVu\ Sans\ Mono\ 12
+
+
+" nastavime monitor
+set lines=72
+set columns=148
+

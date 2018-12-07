@@ -1,0 +1,9 @@
+" settings for the default — built-in — monitor
+" set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
+set guifont=DejaVu\ Sans\ Mono\ 14
+
+
+" nastavime monitor
+set lines=48
+set columns=152
+

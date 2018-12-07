@@ -1,0 +1,129 @@
+#!/bin/bash
+# tento script ma za ukol zjistit, cim se ma TeXovy zdrojak
+# zpracovat, to jest jakym formatem TeXu
+
+VIM="/usr/local/share/vim"
+. $VIM/svim/bin/vim-runtime/tex/config.sh
+
+# nejprve vystupni format, ten musi zadat caller
+if [ "$1" = "DVI" ] ; then
+    PREF=""
+elif [ "$1" = "PDF" ] ; then
+    PREF="pdf"
+else
+    exit 1
+fi
+
+
+# nasledne se podivame, zda hlavni TeXovany soubor nema instrukci
+# o zpusobu zpracovani uvedenu explicite, tj. zda prvy radek nema tvar
+# %! command # procent muze byt vice, resp. melo by jich byt vice,
+# protoze %! je pro file a jine utility znamenim postscriptu!
+# Proto doporucuji "%%%!"
+# Also, skip anything other then '%' (BOM)
+COMM="$( head -n 1 "$2" | sed "s/^[^%]*%\+! *\([^ ]\+\).*/\1/" )"
+# a muze pripadne pridat i instrukci k potlaceni vystupu
+OPTCOMM="$( head -n 1 "$2" | sed "s/^%\+! *$COMM \+\([^ ]\+\).*/\1/" )"
+
+shopt -s nocasematch
+case "$COMM" in
+    "no-tex"|"notex")
+        # jedna se o soubor maker, jenz sam o sobe nema byti TeXovan
+        echo "Tento soubor není určen k přímemu zpracování!"
+        sleep 3
+        exit 0
+        ;;
+    "xetex")
+        PROG=xetex
+        PREF=""
+        ;;
+    "xelatex")
+        PROG=xelatex
+        PREF=""
+        ;;
+    "luatex")
+        PROG=luatex
+        PREF=""
+        ;;
+    "lualatex")
+        PROG=lualatex
+        PREF=""
+        ;;
+    "cslatex")
+        PROG=cslatex
+        ;;
+    "latex")
+        PROG=latex
+        ;;
+    "csplain")
+        PROG=csplain
+        ;;
+    "tex")
+        PROG=tex
+        ;;
+    *)
+        PROG=none
+        ;;
+esac
+
+case "$OPTCOMM" in
+    "noout"|"no-out")
+        VYSTUP=0
+        ;;
+    "out")
+        VYSTUP=1
+        ;;
+    *)
+        VYSTUP=0
+        ;;
+esac
+
+# pokud to nebylo explicite zadano, zkusime to uhodnout
+if [ "$PROG" = "none" ]; then
+    if grep -q "^[^%]*\\documentclass[^%{]*{" "$2" ; then
+        # latex
+        if grep -q "^[^%]*\\usepackage{czech}" "$2" ; then
+            PROG="cslatex"
+        else
+            PROG="latex"
+        fi
+    else
+        # plain
+        if grep -q "^[^%]*\\chyph\>" "$2" || grep -q "^[^%]*\\input\> \+\<svim" "$2" ; then
+            PROG="csplain"
+        else
+            PROG="tex"
+        fi
+    fi
+fi
+
+# echo -e "\n\n\n"
+# echo "$PREF $PROG" # >> $HOME/vimtexuj
+# echo $VYSTUP
+# echo -e "\n\n\n"
+# sleep 7
+
+# XXX: following doesn't work properly in case the main TeX file inputs other files using relative paths
+# if [ $VYSTUP -eq 1 ]; then
+#     nice -n 11 $PREF$PROG -output-directory $( dirname "$2" ) "$2"
+# else
+#     nice -n 11 $PREF$PROG -output-directory $( dirname "$2" ) "$2" > /dev/null
+# fi
+
+
+# XXX: this does
+CUR_DIR="$( pwd )"
+WRK_DIR="$( dirname "$2" )"
+WRK_FILE="$( basename "$2" )"
+
+cd "$WRK_DIR"
+if [ $VYSTUP -eq 1 ]; then
+    nice -n 11 $PREF$PROG "$WRK_FILE"
+else
+    nice -n 11 $PREF$PROG "$WRK_FILE" > /dev/null
+fi
+cd "$CUR_DIR"
+
+
+exit 0
+

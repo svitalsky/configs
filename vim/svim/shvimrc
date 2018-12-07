@@ -1,0 +1,78 @@
+fun! ShComment(start, end)
+  if a:start > a:end
+    " copajeto toleto, toleto ne
+    return
+  endif
+
+  " radek po radku projedeme cely scope ve dvou cyklech
+  " v prvnim zjistime nejmensi pocet uvodnich mezer na radku - chceme udrzet indent bloku,
+  " ale taky komentitka pekne v lajne
+  " ve druhem udelame komentare nebo odkomentujeme
+
+  " prvni cyklus
+  let blokind = 10000           " proste hodne velky indent, no
+  let cur = a:start
+  while cur <= a:end
+    let curstr = getline(cur)
+    let delka = strlen(curstr)
+    if delka > 0                " prazdne ignorujeme
+      let ii = 0                " iterator
+      while (ii < delka) && (curstr[ii] == " ")    " hledame prvni ne-mezeru
+        let ii = ii + 1
+      endwhile
+      if ii < delka             " aby nebyl cely radek z mezer
+        if ii < blokind
+          let blokind = ii
+        endif
+      endif
+    endif
+    let cur = cur + 1           " popojedem
+  endwhile
+
+  " druhy cyklus
+  let cur = a:start
+  while cur <= a:end
+    let curstr = getline(cur)
+    let delka = strlen(curstr)
+    if delka > 0    " prazdne ignorujeme
+      let ii = 0    " iterator
+      let res = ""    " buffer pro vysledek
+      while (ii < delka) && (ii < blokind)    " uvodni mezery nechame jak jsou
+        let res = res . curstr[ii]
+        let ii = ii + 1
+      endwhile
+
+      if ii < delka    " jeste neco zbylo?
+        if curstr[ii] == "#"    " prvni znak je komentitko - toz odkomentujmez to
+          if curstr[ii + 1] == " "    " za nim moje mezera pro vzhled - pryc s ni (jestli tam patri, smula)
+            while (ii + 2) < delka    " pridej zbytek odkomentovaneho radku
+              let res = res . curstr[ii + 2]
+              let ii = ii + 1
+            endwhile
+          else                        " zadna hezka mezera, asi rucni komentar
+            while (ii + 1) < delka    " opet pridej zbytek radku
+              let res = res . curstr[ii + 1]
+              let ii = ii + 1
+            endwhile
+          endif
+        else                      " prvni neprazdny neni komentitko - zakomentujmez
+          let res = res . "# "    " za pripadne mezery (dodrzime indent) pridame komentitko a hezkou mezirku
+          while ii < delka    " dodame zbytek radku
+            let res = res . curstr[ii]
+            let ii = ii + 1
+          endwhile
+        endif
+        call setline(cur, res)    " zapiseme vysledek
+      endif
+    endif
+    let cur = cur + 1             " a poposkocime o radek
+  endwhile
+  return
+endfun
+
+command! -nargs=0 -range -buffer ShComment call ShComment(<line1>, <line2>)
+
+vmap <F12> :ShComment<Cr>
+nmap <F12> :ShComment<Cr>
+imap <F12> # 
+
