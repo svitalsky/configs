@@ -1,0 +1,30 @@
+startup_message off
+
+vbell off
+
+# escape /a
+
+defscrollback 10240
+
+hardstatus alwayslastline
+
+# hardstatus string "%{= kw}%-w%{= BW}%n %t%{-}%+w %-= %c"
+# hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W}%c %{g}]'
+hardstatus string '%{= kg}[ %{G}%H %{g}][%= %{= kw}%?%-w%?%{r}(%{= BW}%n %t%{-}%?(%u)%?%{r})%{w}%?%+w%?%?%= %{g}][%{B} %d.%m. %{W}%c %{g}]'
+
+altscreen on
+
+autodetach on
+
+bindkey ^[[1;5A prev
+bindkey ^[[1;5B next
+
+screen
+# screen -t mail -M 1 tail -f /var/log/mail.log
+# screen -t syslog 2 tail -f /var/log/syslog
+screen
+screen
+screen
+screen
+screen
+select 1
