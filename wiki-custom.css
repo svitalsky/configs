@@ -1,0 +1,26 @@
+@-moz-document url-prefix("http://moinmo.in/"), url-prefix("http://wiki.apache.org/"), url-prefix("http://freemind.sourceforge.net/wiki"), domain("wikipedia.org"), domain("wikisource.org"), domain("wiki.jetbrains.net"), domain("en.wikibooks.org"), domain("struts.apache.org"), domain("www.imfdb.org"), domain("www.investopedia.com") {
+body {
+    /* font-size: 18px !important; */
+    background: #e0f0d0 !important;
+}
+#content {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+div#content {
+    background: #f4f8f4 !important;
+}
+div#content p, div#content li, div#content dd {
+    font: 18px/21px"URW Bookman L", Georgia, "Liberation Serif", serif !important;
+}
+div.thumbcaption {
+    font: 15px/18px"URW Bookman L", Georgia, "Liberation Serif", serif !important;
+}
+dt {
+    font: 18px/21px Helvetica, Arial, sans-serif !important;
+}
+div#mw-panel {
+    font: 16px/20px Helvetica, Arial, sans-serif !important;
+}
+}
