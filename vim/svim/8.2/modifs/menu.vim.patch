@@ -1,0 +1,10 @@
+--- menu.vim	2017-03-05 20:18:37.363533726 +0100
++++ menu.vim	2017-03-05 20:18:30.643688379 +0100
+@@ -1202,6 +1202,7 @@
+ an 50.700 &Syntax.-SEP3-		<Nop>
+ an 50.710 &Syntax.Co&lor\ Test		:sp $VIMRUNTIME/syntax/colortest.vim<Bar>so %<CR>
+ an 50.720 &Syntax.&Highlight\ Test	:runtime syntax/hitest.vim<CR>
++an 50.725 &Syntax.Convert\ to\ HTML\ Ol&d\ Way	:runtime syntax/2html-oldway.vim<CR>
+ an 50.730 &Syntax.&Convert\ to\ HTML	:runtime syntax/2html.vim<CR>
+ 
+ endif " !exists("did_install_syntax_menu")

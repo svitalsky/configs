@@ -1,0 +1,30 @@
+*** dtml.vim	Wed Jun 20 12:26:17 2007
+--- syntax/dtml.vim	Wed Jun 20 12:26:31 2007
+***************
+*** 105,110 ****
+--- 105,112 ----
+  syn keyword dtmlAttribute where whitespace whrandom xml_namespace zclass_candidate_view_actions contained
+  syn keyword dtmlAttribute ZClassBaseClassNames ziconImage ZopeFind ZQueryIds contained
+  
++ syn keyword dtmlMethod sequence number start end next previous contained
++ 
+  syn keyword dtmlMethod abs absolute_url ac_inherited_permissions aCommon contained
+  syn keyword dtmlMethod aCommonZ acos acquiredRolesAreUsedBy aDay addPropertySheet aMonth AMPM contained
+  syn keyword dtmlMethod ampm AMPMMinutes appendChild appendData appendHeader asin atan atan2 contained
+***************
+*** 151,157 ****
+  syn keyword dtmlMethod objectItems objectValues oct OPTIONS ord paretovariate parts pCommon contained
+  syn keyword dtmlMethod pCommonZ pDay permissionsOfRole pMonth pow PreciseAMPM PreciseTime contained
+  syn keyword dtmlMethod previousObject propertyInfo propertyLabel PROPFIND PROPPATCH PUT quit contained
+! syn keyword dtmlMethod raise_standardErrorMessage randint random read read_raw redirect contained
+  syn keyword dtmlMethod removeAttribute removeAttributeNode removeChild replace replaceChild contained
+  syn keyword dtmlMethod replaceData rfc822 rfind rindex rjust rolesOfPermission round rstrip contained
+  syn keyword dtmlMethod save searchResults second seed set setAttribute setAttributeNode setBase contained
+--- 153,159 ----
+  syn keyword dtmlMethod objectItems objectValues oct OPTIONS ord paretovariate parts pCommon contained
+  syn keyword dtmlMethod pCommonZ pDay permissionsOfRole pMonth pow PreciseAMPM PreciseTime contained
+  syn keyword dtmlMethod previousObject propertyInfo propertyLabel PROPFIND PROPPATCH PUT quit contained
+! syn keyword dtmlMethod raise_standardErrorMessage randint random range read read_raw redirect contained
+  syn keyword dtmlMethod removeAttribute removeAttributeNode removeChild replace replaceChild contained
+  syn keyword dtmlMethod replaceData rfc822 rfind rindex rjust rolesOfPermission round rstrip contained
+  syn keyword dtmlMethod save searchResults second seed set setAttribute setAttributeNode setBase contained

@@ -207,6 +207,19 @@ au VimEnter *.* if &diff | set wrap | endif
 au VimEnter * set wrap
 au VimEnter *.* set wrap
 
+" wrap at words and set generally for text editing
+fun! Wording()
+    setlocal wrap
+    setlocal linebreak
+    setlocal numberwidth=6
+    setlocal columns=96
+    setlocal colorcolumn=0
+    setlocal wrapmargin=0
+endfun
+
+command! -nargs=0 Wording call Wording()
+
+
 set secure
 
 source $VIM/svim/vimrc.local

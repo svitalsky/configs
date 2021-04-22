@@ -74,6 +74,10 @@ amenu Tools.&C\ Vim\ Source      :so $VIM/svim/cvimrc<Cr>
 amenu Tools.Te&X\ Vim\ Source    :so $VIM/svim/texvimrc<Cr>
 amenu Tools.&Html\ Text\ Edit    :so $VIM/svim/htmledvimrc<Cr>
 
+amenu &Window.-SEP4-           <Nop>
+amenu &Window.Wordin&g          :call Wording()<CR>
+tmenu Window.Wording            Pro psani a editaci textu
+
 vmap <M-Left> :RmInd<Cr>`>V`<
 vmap <M-Right> :AddInd<Cr>`>V`<
 
